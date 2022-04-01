@@ -2,7 +2,8 @@
  * assignment_2.c
  *
  * Created: 13/03/2022 14.36.01
- * 
+ * Authors:	Mathias Hansen - 274392
+ *			Jacob Norsted - 273962
  */ 
 
 #include <avr/io.h>

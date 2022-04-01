@@ -2,6 +2,8 @@
  * led.h
  *
  * Created: 20/02/2022 11.12.37
+ * Authors:	Mathias Hansen - 274392
+ *			Jacob Norsted - 273962
  */ 
 
 #ifndef LED_H_

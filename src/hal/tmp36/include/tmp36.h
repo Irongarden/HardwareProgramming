@@ -2,7 +2,8 @@
  * temperature_sensor.h
  *
  * Created: 13/03/2022 14.52.34
- * 
+ * Authors:	Mathias Hansen - 274392
+ *			Jacob Norsted - 273962
  */ 
 
 

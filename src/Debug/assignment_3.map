@@ -680,5 +680,5 @@ END GROUP
 
 .debug_macro
  *(.debug_macro)
-OUTPUT(assignment_2.elf elf32-avr)
+OUTPUT(assignment_3.elf elf32-avr)
 LOAD linker stubs

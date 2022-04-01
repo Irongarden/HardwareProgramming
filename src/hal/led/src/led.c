@@ -2,7 +2,8 @@
  * led.c
  *
  * Created: 20/02/2022 11.13.08
-
+ * Authors:	Mathias Hansen - 274392
+ *			Jacob Norsted - 273962
  */ 
 
 #include <avr/io.h>

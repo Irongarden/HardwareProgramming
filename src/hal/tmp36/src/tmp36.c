@@ -2,7 +2,8 @@
  * tmp36.c
  *
  * Created: 13/03/2022 14.53.26
- *  
+ * Authors:	Mathias Hansen - 274392
+ *			Jacob Norsted - 273962
  */ 
 #include "../include/tmp36.h"
 #include <avr/interrupt.h>
