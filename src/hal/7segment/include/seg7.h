@@ -6,8 +6,8 @@
  */ 
 
 
-#ifndef seg7_H_
-#define seg7_H_
+#ifndef SEG7_H_
+#define SEG7_H_
 
 
 void init_display();

@@ -139,10 +139,10 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="hal\7segment\include\7seg.h">
+    <Compile Include="hal\7segment\include\seg7.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="hal\7segment\src\7seg.c">
+    <Compile Include="hal\7segment\src\seg7.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="hal\led\include\led.h">
