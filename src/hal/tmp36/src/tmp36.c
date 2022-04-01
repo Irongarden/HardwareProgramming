@@ -7,6 +7,7 @@
 #include "../include/tmp36.h"
 #include <avr/interrupt.h>
 
+
 #define v_out PK7
 #define enable PG0
 
@@ -66,7 +67,7 @@ void tmp36_init(void (*callback)(uint8_t deg_c))
 	// ***** Configure Timer 1 Channel B. ******
 	
 	// Set to Clear timer on Compare Match mode (CTC).
-	TCCR1A |= _BV(WGM11);
+	TCCR1A |= _BV(WGM12);
 	
 	// Set timer to toggle on compare match.
 	TCCR1A |= _BV(COM1B0);

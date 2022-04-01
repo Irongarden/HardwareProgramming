@@ -2,7 +2,7 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
-hal\7segment\src\7seg.c
+hal\7segment\src\seg7.c
 
 hal\led\src\led.c
 
