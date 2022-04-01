@@ -30,7 +30,7 @@
 static uint8_t currentSegment = 0;
 
 // Holds number split into digits.
-static uint8_t digits[SEGMENTS] = {8, 8, 8, 8};
+static uint8_t digits[SEGMENTS] = {10, 10, 10, 10};
 	
 // Holds possible values for segment, 10 = OFF 
 static char segValues[] = {0x3, 0x9F, 0x25, 0xD, 0x99, 0x49, 0x41, 0x1F, 0x1, 0x19, 0xFF};
