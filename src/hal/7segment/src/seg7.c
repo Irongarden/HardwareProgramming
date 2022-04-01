@@ -29,7 +29,7 @@
 // Segment that is currently being written to.
 static uint8_t currentSegment = 0;
 
-// Holds number split into digits.
+// Holds number split into digits - default off.
 static uint8_t digits[SEGMENTS] = {10, 10, 10, 10};
 	
 // Holds possible values for segment, 10 = OFF 
