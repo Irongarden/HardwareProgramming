@@ -10,6 +10,7 @@
 #include <avr/interrupt.h>
 #include "hal/tmp36/include/tmp36.h"
 #include "hal/led/include/led.h"
+#include "hal/7segment/include/7seg.h"
 
 // Offset 17 = led 1-8 @ 18-25 deg C.
 #define offset 17
@@ -25,6 +26,7 @@ int main(void)
 {
 	init_leds();
 	tmp36_init(new_measurement);
+	init_display();
 	
 	// Enable interrupt globally.
 	sei();
