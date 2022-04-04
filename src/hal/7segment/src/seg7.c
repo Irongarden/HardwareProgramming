@@ -26,14 +26,14 @@
 // No of segments in display.
 #define SEGMENTS 4
 
+// Holds possible values for segment, 10 = all elements of segment off.
+static char display_code[] = {0x3, 0x9F, 0x25, 0xD, 0x99, 0x49, 0x41, 0x1F, 0x1, 0x19, 0xFF};
+
 // Segment that is currently being written to.
 static uint8_t currentSegment = 0;
 
-// Holds number split into digits - default off.
-static uint8_t digits[SEGMENTS] = {10, 10, 10, 10};
-	
-// Holds possible values for segment, 10 = OFF 
-static char segValues[] = {0x3, 0x9F, 0x25, 0xD, 0x99, 0x49, 0x41, 0x1F, 0x1, 0x19, 0xFF};
+// Holds number split into digits - default all elements of segment off.
+static uint8_t digits[SEGMENTS] = {0xFF, 0xFF, 0xFF, 0xFF};
 
 static void set_refresh_rate() 
 {
@@ -49,7 +49,7 @@ static void set_refresh_rate()
 	// Enable Timer interrupt
 	TIMSK4 |= _BV(OCIE4A);
 	
-	// Set timer frequency 60Hz/digit (16000000 / (2*240*8))-1 = 4165.6
+	// Set timer frequency 60Hz/digit (16000000 / (2*60*4*8))-1 = 4165.6
 	OCR4A = 4166;
 }
 
@@ -71,64 +71,80 @@ void init_display()
 	set_refresh_rate();
 }
 
-// Splits number into digits.
+// Returns display code.
+// If a zero is found, it will determine if it should return code equivalent to 0 or turn off all elements of segment.
+static uint8_t get_display_code(uint8_t segment)
+{
+	// Will return current value if non-zero except last digit (segment 3) are allowed to show 0.
+	if (segment == SEGMENTS - 1 || digits[segment] != 0)
+	{
+		return digits[segment];
+	}
+
+	// Current digit is 0
+
+	// No more segments to check
+	if (segment == 0)
+	{
+		return display_code[10];
+	}
+
+	// Decrement segment to check the digit before.
+	segment--;
+
+	// Checks digit before, get_display_code returns 0xFF if only zeros are found.
+	if (get_display_code(segment) == display_code[10])
+	{
+		// All previous digit are 0
+		// Turns off the current segment.
+		return display_code[10];
+	}
+	else
+	{
+		// A non-zero value is found in previous digits
+		// Sets current segment to 0.
+		return digits[segment];
+	}
+}
+
+// Overwrites original separated values with display code equivalent. 
+static void convert_to_display_code() {
+	for (uint8_t i = 0; i < SEGMENTS - 1; i++) {
+		digits[i] = get_display_code(digits[i]);
+	}
+}
+
+// Splits number into separate digits.
+static void split_digits(uint8_t value, uint8_t digit) {
+	// Base case - Done.
+	if (digit == 0) {
+		digits[digit] = value % 10;
+	}
+	else {
+		digits[digit] = value % 10;
+		value = value / 10;
+		
+		// Recurse until done.
+		digit--;
+		split_digits(value, digit);
+	}
+}
+
+// Input from application
 void printint_4u(uint16_t value) 
 {
-	digits[3] = value % 10;
-	value = value / 10;
-	digits[2] = value % 10;
-	value = value / 10;
-	digits[1] = value % 10;
-	value = value / 10;
-	digits[0] = value % 10;
+	split_digits(value, SEGMENTS - 1);
+	convert_to_display_code();
 }
 
-// Returns the number that should be converted to display code.
-// If a zero is found, it will determine if it should return 0 or 10 where 10 will turn off the segment.
-static uint8_t get_digit(uint8_t segment) 
-{
-	 // Will return current value if non-zero except last digit (segment 3) are allowed to show 0.
-	 if (segment == SEGMENTS - 1 || digits[segment] != 0) 
-	 {
-		 return digits[segment];
-	 }
-
-	 // Current digit is 0
-
-	 // No more segments to check
-	 if (segment == 0)
-	 {
-		 return 10;
-	 }
-
-	 // Decrement segment to check the digit before.
-	 segment--;
-
-	 // Checks digit before, getDigit returns 10 if only zeros are found.
-	 if (get_digit(segment) == 10) 
-	 {
-		 // All previous digit are 0
-		 // Turns off the current segment.
-		 return 10;
-	 }
-	 else 
-	 {
-		 // A non-zero value is found in previous digits
-		 // Sets current segment = 0.
-		 return 0;
-	 }
-}
 
 ISR(TIMER4_COMPA_vect)
 {	
-	// Gets the value for the current segment. 
-	uint8_t val = get_digit(currentSegment);
-	
-	// Convert digit to display code
+	// Shift display code into register.
 	for(uint8_t i = 0; i < 8; i++)
 	{
-		// Value bitwise right shift to onto serial input.
-		if (segValues[val] >> i & 1) 
+		// bitwise right shift to onto serial input.
+		if (digits[currentSegment] >> i & 1) 
 		{
 			PORTB |=_BV(SI);
 		} 
