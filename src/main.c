@@ -33,7 +33,7 @@ int main(void)
 	
     while (1) 
     {
-		printint_4u(1234);
+		printint_4u(temp);
 		//uint8_t level = temp - offset;
 		//if (level <= 0)
 		//{

@@ -26,6 +26,25 @@ static char segValues[] = {0x3, 0x9F, 0x25, 0xD, 0x99, 0x49, 0x41, 0x1F, 0x1, 0x
 uint8_t display[4] = {0xFF,0xFF,0xFF,0xFF};
 
 
+void setrefreshrate()
+{
+	// Set timer toggle on compare match
+	TCCR4A |= _BV(COM4A0);
+	
+	// Set prescaler 8
+	TCCR4B |= _BV(CS41);
+	
+	// Set to Clear timer on compare match (CTC mode)
+	TCCR4B |= _BV(WGM42);
+	
+	// Enable Timer interrupt
+	TIMSK4 |= _BV(OCIE4A);
+	
+	// Set timer frequency 60Hz/digit (16000000 / (2*240*8))-1 = 4165.6
+	OCR4A = 4166;
+}
+
+
 void init_display(){
 	// Set PF0-PF3 to output (digits)
 	DDRF |= _BV(D1) | _BV(D2) | _BV(D3) | _BV(D4);
@@ -65,14 +84,41 @@ void init_display(){
 	setrefreshrate();
 }
 
-void convert(){
+uint8_t convert_digit(uint8_t segment)
+{
+	uint8_t val = digits[segment];
 	
-	display[0]=segValues[digits[0]];
-	display[1]=segValues[digits[1]];
-	display[2]=segValues[digits[2]];
-	display[3]=segValues[digits[3]];
-	
+	// Turns off digit display if value = 0 and is first display.
+	if (segment == 0 && val == 0){
+		return segValues[10];
+	}
+	// Turns off digit display if value = 0 and display before = 0.
+	else if (segment == 1 && val == 0){
+		if (digits[segment - 1] == 0) {
+			return segValues[10];
+		}
+		// Turns off digit display if value = 0 and 2 displays before are both 0.
+		} else if ( segment == 2 && val == 0){
+		if (digits[segment -1] == 0 && digits[segment -2] == 0){
+			return segValues[10];
+		}
+		
+		
 }
+return segValues[digits[segment]];
+	}
+void convert(){
+	for (uint8_t i = 0; i < 4; i++){
+		display[i] = convert_digit(i);
+	}
+	
+	//display[0]=segValues[digits[0]];
+	//display[1]=segValues[digits[1]];
+	//display[2]=segValues[digits[2]];
+	//display[3]=segValues[digits[3]];
+}
+	
+	
 void printint_4u(uint16_t value){
 	
 	// Seperating digits
@@ -87,23 +133,7 @@ void printint_4u(uint16_t value){
 	convert();
 }
 
-void setrefreshrate()
-{
-	// Set timer toggle on compare match
-	TCCR4A |= _BV(COM4A0);
-	
-	// Set prescaler 8
-	TCCR4B |= _BV(CS41);
-	
-	// Set to Clear timer on compare match (CTC mode)
-	TCCR4B |= _BV(WGM42);
-	
-	// Enable Timer interrupt
-	TIMSK4 |= _BV(OCIE4A);
-	
-	// Set timer frequency 60Hz/digit (16000000 / (2*240*8))-1 = 4165.6
-	OCR4A = 4166;
-}
+
 
 void cleardisplay(){
 	// Turn off digit displays
