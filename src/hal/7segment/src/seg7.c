@@ -20,16 +20,34 @@
 #define D3 PF2
 #define D4 PF3
 
-uint8_t segment = 0;
+uint8_t segment = 2;
 uint8_t digits[4] = {8,8,8,8};
 static char segValues[] = {0x3, 0x9F, 0x25, 0xD, 0x99, 0x49, 0x41, 0x1F, 0x1, 0x19, 0xFF};
+uint8_t display[4] = {0xFF,0xFF,0xFF,0xFF};
 
 
 void init_display(){
 	// Set PF0-PF3 to output (digits)
 	DDRF |= _BV(D1) | _BV(D2) | _BV(D3) | _BV(D4);
 	
+	//--!!!! SPI Change: !!!!!--
 	
+	// Setup CPOL functionality to sample at rising edge.
+	SPCR &= ~ (_BV(CPOL) | _BV(CPHA));
+	
+	// DORD 0 OR 1: start from least significant bit or opposite.
+	SPCR |=_BV(DORD);
+	
+	SPCR |= _BV(MSTR);
+	
+	// set SCK frequency to Fosc/128
+	SPCR |= _BV(SPR1) | _BV(SPR0);
+	SPSR &= ~_BV(SPI2X);
+	
+	// Enable SPI
+	SPCR |= _BV(SPE);
+	 
+	//--!!!! SPI Change: !!!!!--
 	
 	// Set SI to output
 	DDRB |= _BV(SI);
@@ -47,7 +65,17 @@ void init_display(){
 	setrefreshrate();
 }
 
+void convert(){
+	
+	display[0]=segValues[digits[0]];
+	display[1]=segValues[digits[1]];
+	display[2]=segValues[digits[2]];
+	display[3]=segValues[digits[3]];
+	
+}
 void printint_4u(uint16_t value){
+	
+	// Seperating digits
 	digits[3] = value%10;
 	value = value/10;
 	digits[2] = value%10;
@@ -55,6 +83,8 @@ void printint_4u(uint16_t value){
 	digits[1] = value%10;
 	value = value/10;
 	digits[0] = value%10;
+	
+	convert();
 }
 
 void setrefreshrate()
@@ -80,40 +110,49 @@ void cleardisplay(){
 	PORTF |= _BV(D1) | _BV(D2) | _BV(D3)| _BV(D4);
 }
 
-uint8_t getValue(uint8_t val){
-	
-}
 
 ISR(TIMER4_COMPA_vect){	
-	for(uint8_t i =0; i<8;i++){
-		uint8_t val = digits[segment];
-		
-		if (segment == 0 && val == 0){
-			val = 10;
-		}
-		else if (segment == 1 && val == 0){
-			if (digits[segment - 1] == 0) {
-				val = 10;
-			}
-		} else if ( segment == 2 && val == 0){
-			if (digits[segment -1] == 0 && digits[segment -2] == 0){
-				val = 10;
-			}
-		}
-		
 	
-		// Convert digit to display code.
-		if(segValues[val]>>i & 1){
-			PORTB |=_BV(SI);
-			}else{
-			PORTB &= ~_BV(SI);
-		}
-		PORTB |= _BV(SCK);
-		PORTB &= ~_BV(SCK);
-	}
-		
+	
+	//for(uint8_t i =0; i<8;i++){
+		//uint8_t val = digits[segment];
+		//
+		//// Turns off digit display if value = 0 and is first display.
+		//if (segment == 0 && val == 0){
+			//val = 10;
+		//}
+		//// Turns off digit display if value = 0 and display before = 0.
+		//else if (segment == 1 && val == 0){
+			//if (digits[segment - 1] == 0) {
+				//val = 10;
+			//}
+			//// Turns off digit display if value = 0 and 2 displays before are both 0.
+		//} else if ( segment == 2 && val == 0){
+			//if (digits[segment -1] == 0 && digits[segment -2] == 0){
+				//val = 10;
+			//}
+		//}
+		//
+	//
+		//// Convert digit to display code.
+		//if(segValues[val]>>i & 1){
+			//// load SI with value
+			//PORTB |=_BV(SI);
+			//}else{
+			//PORTB &= ~_BV(SI);
+		//}
+		//// Clock the value into the storage register
+		//PORTB |= _BV(SCK);
+		//PORTB &= ~_BV(SCK);
+	//}
+	
+	
+	
+	
+	
+	
 	cleardisplay();
-		
+		// Clock to state output
 	PORTB |= _BV(RCK);
 	PORTB &= ~_BV(RCK);
 		
@@ -121,7 +160,9 @@ ISR(TIMER4_COMPA_vect){
 	PORTF &= ~(_BV(segment));
 	segment++;
 		
+		
 	if(segment==4){
 		segment = 0;
 	}
+	SPDR = display[segment];
 }

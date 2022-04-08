@@ -15,7 +15,7 @@
 // Offset 17 = led 1-8 @ 18-25 deg C.
 #define offset 17
 static uint8_t temp = 0;
-
+static uint16_t xn = 0123;
 static void new_measurement(uint8_t deg_c)
 {
 	temp = deg_c;
@@ -33,7 +33,7 @@ int main(void)
 	
     while (1) 
     {
-		printint_4u(temp);
+		printint_4u(1234);
 		//uint8_t level = temp - offset;
 		//if (level <= 0)
 		//{
