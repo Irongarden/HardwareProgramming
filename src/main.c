@@ -12,42 +12,45 @@
 #include "hal/tmp36/include/tmp36.h"
 #include "hal/led/include/led.h"
 #include "hal/7segment/include/seg7.h"
+#include <util/delay.h>
 
-// Offset 17 = led 1-8 @ 18-25 deg C.
-#define offset 17
+// Offset 18 = led 1-8 @ 18-25 deg C.
+#define offset 18
 static uint8_t temp = 0;
+static uint8_t led_level = 0;
 
+// Temperature callback.
 static void new_measurement(uint8_t deg_c)
 {
 	temp = deg_c;
 }
 
-
 int main(void)
 {
+	// Initialize HAL.
 	init_leds();
 	tmp36_init(new_measurement);
-	init_display();
+	init_display(SPI);
 	
 	// Enable interrupt globally.
 	sei();
 	
-    while (1) 
-    {
+	// Will shortly turn on all elements in segments. 
+	_delay_ms(500);
+	
+	// Application
+    while (1)
+    {		
 		printint_4u(temp);
-		//uint8_t level = temp - offset;
-		//if (level <= 0)
-		//{
-			//lightbar(0);
-		//}
-		//else if (level < 9)
-		//{
-			//lightbar(level);
-		//}
-		//else
-		//{
-			//lightbar(8);
-		//}
+		
+		led_level = temp - offset;
+		
+		if (led_level <= 0)
+			lightbar(0);
+		else if (led_level < 9)
+			lightbar(led_level);
+		else
+			lightbar(8);
     }
 	
 	return 0;

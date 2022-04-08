@@ -11,7 +11,12 @@
 
 #include <stdint.h>
 
-void init_display();
+typedef enum {
+	SERIAL = 0,
+	SPI
+} communication_t;
+
+void init_display(communication_t mode);
 void printint_4u(uint16_t value);
 
 #endif /* 7seg_H_ */

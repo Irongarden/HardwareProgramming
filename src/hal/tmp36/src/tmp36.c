@@ -67,14 +67,14 @@ void tmp36_init(void (*callback)(uint8_t deg_c))
 	
 	// ***** Configure Timer 1 Channel B. ******
 	
-	// Set to Clear timer on Compare Match mode (CTC).
-	TCCR1A |= _BV(WGM12);
-	
 	// Set timer to toggle on compare match.
 	TCCR1A |= _BV(COM1B0);
 	
 	// Set Clock frequency to 16MHz/256 = 62500kHz
 	TCCR1B |=  _BV(CS12);  //256 prescaler
+	
+	// Set to Clear timer on Compare Match mode (CTC).
+	TCCR1B |= _BV(WGM12);
 	
 	// Enable Timer Interrupt
 	TIMSK1 |= _BV(OCIE1B);

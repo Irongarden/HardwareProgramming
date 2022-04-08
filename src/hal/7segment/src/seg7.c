@@ -26,14 +26,23 @@
 // No of segments in display.
 #define SEGMENTS 4
 
-// Holds possible values for segment, 10 = all elements of segment off.
+// Holds possible values for segment, 10 = all elements of segment off. Decimal point always off
 static char display_code[] = {0x3, 0x9F, 0x25, 0xD, 0x99, 0x49, 0x41, 0x1F, 0x1, 0x19, 0xFF};
+	
+// Current communication mode - default serial.
+static communication_t communication = SERIAL;
 
 // Segment that is currently being written to.
-static uint8_t currentSegment = 0;
+static uint8_t current_segment = 0;
 
-// Holds number split into digits - default all elements of segment off.
-static uint8_t digits[SEGMENTS] = {0xFF, 0xFF, 0xFF, 0xFF};
+// Indicates if all leading values of a segment is zero.
+static uint8_t leading_zeros = 1;
+
+// Holds number split into digits.
+static uint8_t digits[SEGMENTS] = {0, 0, 0, 0};
+
+// Holds all separated digits as display code - default all elements of segment on.
+static uint8_t display[SEGMENTS] = {0x0, 0x0, 0x0, 0x0};
 
 static void set_refresh_rate() 
 {
@@ -53,8 +62,10 @@ static void set_refresh_rate()
 	OCR4A = 4166;
 }
 
-void init_display() 
-{
+void init_display(communication_t mode) {
+	// Set communication mode.
+	communication = mode;
+	
 	// Set PF0-PF3 to output (digits)
 	DDRF |= _BV(D1) | _BV(D2) | _BV(D3) | _BV(D4);
 	
@@ -67,59 +78,62 @@ void init_display()
 	// Set RCK to output
 	DDRB |= _BV(RCK);
 	
+	if (communication == SPI) {
+		// Setup CPOL functionality to sample at rising edge.
+		SPCR &= ~ (_BV(CPOL) | _BV(CPHA));
+	
+		// DORD 0 OR 1: start from least significant bit or opposite.
+		SPCR |=_BV(DORD);
+	
+		// Set Master.
+		SPCR |= _BV(MSTR);
+	
+		// Set SCK frequency to Fosc/128.
+		SPCR |= _BV(SPR1) | _BV(SPR0);
+		SPSR &= ~_BV(SPI2X);
+	
+		// Enable SPI.
+		SPCR |= _BV(SPE);
+	}
+	
 	// Initializes timer and interrupt
 	set_refresh_rate();
 }
 
-// Returns display code.
-// If a zero is found, it will determine if it should return code equivalent to 0 or turn off all elements of segment.
+// Returns display code equivalent to digit value.
+// If a zero is found, it will determine if it should return code equivalent to 0 or turn off the segment based on values in more significant segments.
 static uint8_t get_display_code(uint8_t segment)
 {
-	// Will return current value if non-zero except last digit (segment 3) are allowed to show 0.
-	if (segment == SEGMENTS - 1 || digits[segment] != 0)
-	{
-		return digits[segment];
-	}
-
-	// Current digit is 0
-
-	// No more segments to check
-	if (segment == 0)
-	{
+	// Least significant segment is allowed to be zero.
+	if (segment == SEGMENTS - 1)
+		return display_code[digits[segment]];
+	
+	// If a value is zero and all more significant segments are zero it will return display code equivalent to be turned off. 
+	if (digits[segment] == 0 && leading_zeros) 
 		return display_code[10];
-	}
+	
+	// First time a non-zero value is found leading zeros will be false. 
+	// This effectively returns less significant zeros to display code equivalent to zero instead of having them turned off.
+	if (leading_zeros)
+		leading_zeros = 0;
 
-	// Decrement segment to check the digit before.
-	segment--;
-
-	// Checks digit before, get_display_code returns 0xFF if only zeros are found.
-	if (get_display_code(segment) == display_code[10])
-	{
-		// All previous digit are 0
-		// Turns off the current segment.
-		return display_code[10];
-	}
-	else
-	{
-		// A non-zero value is found in previous digits
-		// Sets current segment to 0.
-		return digits[segment];
-	}
+	// Returns display code equivalent to digit value.
+	return display_code[digits[segment]];
 }
 
-// Overwrites original separated values with display code equivalent. 
-static void convert_to_display_code() {
-	for (uint8_t i = 0; i < SEGMENTS - 1; i++) {
-		digits[i] = get_display_code(digits[i]);
-	}
+// Sets display code from separated digit values starting from most significant segment.
+static void set_display_code() {
+	leading_zeros = 1;
+	for (uint8_t i = 0; i < SEGMENTS; i++) 
+		display[i] = get_display_code(i);
 }
 
 // Splits number into separate digits.
-static void split_digits(uint8_t value, uint8_t digit) {
+static void split_digits(uint16_t value, uint8_t digit) {
+	
 	// Base case - Done.
-	if (digit == 0) {
+	if (digit == 0)
 		digits[digit] = value % 10;
-	}
 	else {
 		digits[digit] = value % 10;
 		value = value / 10;
@@ -133,31 +147,13 @@ static void split_digits(uint8_t value, uint8_t digit) {
 // Input from application
 void printint_4u(uint16_t value) 
 {
+	// Split digits from least significant value.
 	split_digits(value, SEGMENTS - 1);
-	convert_to_display_code();
+	set_display_code();
 }
 
-
 ISR(TIMER4_COMPA_vect)
-{	
-	// Shift display code into register.
-	for(uint8_t i = 0; i < 8; i++)
-	{
-		// bitwise right shift to onto serial input.
-		if (digits[currentSegment] >> i & 1) 
-		{
-			PORTB |=_BV(SI);
-		} 
-		else 
-		{
-			PORTB &= ~_BV(SI);
-		}
-		
-		// Shift into register.
-		PORTB |= _BV(SCK);
-		PORTB &= ~_BV(SCK);
-	}
-		
+{		
 	// Turn off all segments
 	PORTF |= _BV(D1) | _BV(D2) | _BV(D3)| _BV(D4);
 	
@@ -166,14 +162,29 @@ ISR(TIMER4_COMPA_vect)
 	PORTB &= ~_BV(RCK);
 		
 	// Turn on current segment.
-	PORTF &= ~(_BV(currentSegment));
+	PORTF &= ~(_BV(current_segment));
 	
 	// Increment to next segment.
-	currentSegment++;
+	current_segment++;
 		
 	// Loops around to first segment again.
-	if(currentSegment == SEGMENTS)
-	{
-		currentSegment = 0;
-	}
+	if(current_segment == SEGMENTS)
+		current_segment = 0;
+		
+	if (communication == SPI)
+		SPDR = display[current_segment];
+	else 
+		// Shift display code into register.
+		for(uint8_t i = 0; i < 8; i++)
+		{
+			// bitwise right shift to onto serial input.
+			if (display[current_segment] >> i & 1)
+			PORTB |=_BV(SI);
+			else
+			PORTB &= ~_BV(SI);
+			
+			// Shift into register.
+			PORTB |= _BV(SCK);
+			PORTB &= ~_BV(SCK);
+		}
 }
