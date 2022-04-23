@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="led_test.cpp" />
+    <ClCompile Include="..\src\hal\key\src\key.c">
+      <Filter>ProductionCode\hal\key\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\hal\led\src\led.c">
+      <Filter>ProductionCode\hal\led\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\avrdude\fake_avr\fake_avr_sfr.c">
+      <Filter>Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="key_test.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="ProductionCode">
+      <UniqueIdentifier>{52c0de47-7c24-4c4a-93f9-ea4ec857fb4a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ProductionCode\hal">
+      <UniqueIdentifier>{8eac4346-b07b-4141-aa07-3041c7184212}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ProductionCode\hal\key">
+      <UniqueIdentifier>{0872c6d0-ec40-473a-b77c-f1b5ca8582a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ProductionCode\hal\key\include">
+      <UniqueIdentifier>{22bb1d3a-8a53-4b2d-8657-9e4155a3f19f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ProductionCode\hal\key\src">
+      <UniqueIdentifier>{d79443b9-b6ab-4fc5-8771-46dacef53a6e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ProductionCode\hal\led">
+      <UniqueIdentifier>{3657c164-5231-4709-8196-f2f582396d18}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ProductionCode\hal\led\include">
+      <UniqueIdentifier>{b301feda-995f-4537-8037-a27a62aa9274}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ProductionCode\hal\led\src">
+      <UniqueIdentifier>{6d5a4d57-7e8f-4bc8-8c6d-870ab4bf1c98}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Helpers">
+      <UniqueIdentifier>{0ad96bdf-0dc7-4118-82b4-82080e421c8e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\hal\key\include\key.h">
+      <Filter>ProductionCode\hal\key\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hal\led\include\led.h">
+      <Filter>ProductionCode\hal\led\include</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

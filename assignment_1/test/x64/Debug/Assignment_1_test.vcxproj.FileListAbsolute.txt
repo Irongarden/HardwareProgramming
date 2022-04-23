@@ -1,0 +1,4 @@
+C:\Users\Jacob\Documents\Github\HWP1\Assignment_1\test\x64\Debug\Assignment_1_test.vcxproj.CopyComplete
+C:\Users\Jacob\Documents\Github\HWP1\Assignment_1\test\x64\Debug\Assignment_1_test.exe
+C:\Users\Jacob\Documents\Github\HWP1\Assignment_1\test\x64\Debug\gtest.pdb
+C:\Users\Jacob\Documents\Github\HWP1\Assignment_1\test\x64\Debug\gtest_main.pdb

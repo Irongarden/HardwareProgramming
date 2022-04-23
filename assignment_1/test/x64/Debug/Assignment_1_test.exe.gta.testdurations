@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GtaTestDurations xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Executable>C:\Users\Jacob\Documents\Github\HWP1\Assignment_1\test\x64\Debug\Assignment_1_test.exe</Executable>
+  <TestDurations>
+    <TestDuration Test="LEDDriverTest.PortA_set_as_output" Duration="1" />
+    <TestDuration Test="LEDDriver.PortA_set_as_output" Duration="1" />
+    <TestDuration Test="LEDDriver.led0_set_on" Duration="1" />
+    <TestDuration Test="LEDDriver.leds_off" Duration="1" />
+    <TestDuration Test="LEDDriver.led0_on" Duration="1" />
+    <TestDuration Test="LEDDriver.led0_on_off" Duration="1" />
+    <TestDuration Test="LEDDriver.led0_on_on" Duration="1" />
+    <TestDuration Test="LEDDriver.led7_on" Duration="1" />
+    <TestDuration Test="LEDDriver.led7_on_off" Duration="1" />
+    <TestDuration Test="LEDDriver.led1_on_led5_on_led1_off_led5_off" Duration="1" />
+    <TestDuration Test="KeyDriver.PortA_set_as_output" Duration="1" />
+    <TestDuration Test="KeyDriver.PortC_0to5_set_as_input" Duration="1" />
+    <TestDuration Test="LEDDriver.led1_on" Duration="1" />
+    <TestDuration Test="LEDDriver.led1_on_on" Duration="1" />
+    <TestDuration Test="LEDDriver.led1_on_off" Duration="1" />
+    <TestDuration Test="LEDDriver.led8_on" Duration="1" />
+    <TestDuration Test="LEDDriver.led8_on_off" Duration="1" />
+    <TestDuration Test="LEDDriver.led2_on_led6_on_led2_off_led6_off" Duration="1" />
+    <TestDuration Test="KeyDriver.PortC_0to5_set_pull_up" Duration="1" />
+    <TestDuration Test="KeyDriver.PortD_2and3_set_as_input" Duration="1" />
+    <TestDuration Test="KeyDriver.PortD_2and3_set_pull_up" Duration="1" />
+    <TestDuration Test="KeyDriver.PC0_set_as_input" Duration="1" />
+    <TestDuration Test="KeyDriver.PC1_set_as_input" Duration="1" />
+    <TestDuration Test="KeyDriver.PC2_set_as_input" Duration="1" />
+    <TestDuration Test="KeyDriver.PC3_set_as_input" Duration="1" />
+    <TestDuration Test="KeyDriver.PC4_set_as_input" Duration="1" />
+    <TestDuration Test="KeyDriver.PC5_set_as_input" Duration="1" />
+    <TestDuration Test="KeyDriver.PD2_set_as_input" Duration="1" />
+    <TestDuration Test="KeyDriver.PD3_set_as_input" Duration="1" />
+    <TestDuration Test="KeyDriver.PC0_set_pull_up" Duration="1" />
+    <TestDuration Test="KeyDriver.PC1_set_pull_up" Duration="1" />
+    <TestDuration Test="KeyDriver.PC2_set_pull_up" Duration="1" />
+    <TestDuration Test="KeyDriver.PC3_set_pull_up" Duration="1" />
+    <TestDuration Test="KeyDriver.PC4_set_pull_up" Duration="1" />
+    <TestDuration Test="KeyDriver.PC5_set_pull_up" Duration="1" />
+    <TestDuration Test="KeyDriver.PD2_set_pull_up" Duration="1" />
+    <TestDuration Test="KeyDriver.PD3_set_pull_up" Duration="1" />
+    <TestDuration Test="LEDDriver.lightbar" Duration="1" />
+  </TestDurations>
+</GtaTestDurations>

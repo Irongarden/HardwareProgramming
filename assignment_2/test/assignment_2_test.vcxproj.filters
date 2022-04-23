@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="TestTMP36.cpp" />
+    <ClCompile Include="..\..\..\..\..\avrdude\fake_avr\fake_avr_sfr.c">
+      <Filter>Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\hal\tmp36\src\tmp36.c">
+      <Filter>ProductionCode\tmp36\src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="ProductionCode">
+      <UniqueIdentifier>{7f69f1aa-d300-4658-b9a7-c55dacefce3b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Helpers">
+      <UniqueIdentifier>{cb8badec-c477-4761-892a-9fca04f66c69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ProductionCode\tmp36">
+      <UniqueIdentifier>{da92a626-b4da-4032-93da-5e87e97f156c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ProductionCode\tmp36\include">
+      <UniqueIdentifier>{93e461c8-9842-4949-9733-cea401a8f5e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ProductionCode\tmp36\src">
+      <UniqueIdentifier>{37986db8-b0a3-4833-9d7b-3916b34368de}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\hal\tmp36\include\tmp36.h">
+      <Filter>ProductionCode\tmp36\include</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GtaTestDurations xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Executable>C:\Users\Jacob\Documents\Github\HWP1\assignment_2\test\x64\Debug\assignment_2_test.exe</Executable>
+  <TestDurations>
+    <TestDuration Test="TMP36.set_pk7_input" Duration="1" />
+    <TestDuration Test="TMP36.set_ADC15_AVCC" Duration="1" />
+    <TestDuration Test="TMP36.set_ADMUX" Duration="1" />
+    <TestDuration Test="TMP36.set_ADCSRB" Duration="1" />
+    <TestDuration Test="TMP36.set_ADCSRA" Duration="1" />
+    <TestDuration Test="TMP36.callback" Duration="1" />
+    <TestDuration Test="TMP36.temp_convert" Duration="1" />
+    <TestDuration Test="TMP36.temp_convert_750" Duration="1" />
+    <TestDuration Test="TMP36.adc_to_mv" Duration="1" />
+    <TestDuration Test="TMP36.mv_to_temp" Duration="1" />
+    <TestDuration Test="TMP36.x_to_temp" Duration="1" />
+    <TestDuration Test="TMP36.adc0_to_mv" Duration="1" />
+    <TestDuration Test="TMP36.adc156_to_mv" Duration="1" />
+    <TestDuration Test="TMP36.adc155_to_mv" Duration="1" />
+    <TestDuration Test="TMP36.adc140_to_mv" Duration="1" />
+    <TestDuration Test="TMP36.adc145_to_mv" Duration="1" />
+    <TestDuration Test="TMP36.set_pg0_output" Duration="1" />
+    <TestDuration Test="TMP36.set_TCCR1A" Duration="1" />
+    <TestDuration Test="TMP36.set_TCCR1B" Duration="1" />
+    <TestDuration Test="TMP36.set_TIMSK1" Duration="1" />
+    <TestDuration Test="TMP36.set_OCR1B" Duration="1" />
+    <TestDuration Test="TMP36.PG0_high" Duration="1" />
+    <TestDuration Test="TMP36.enable_tmp36_PG0_high" Duration="1" />
+    <TestDuration Test="TMP36.adc_started" Duration="1" />
+  </TestDurations>
+</GtaTestDurations>
