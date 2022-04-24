@@ -5,17 +5,16 @@
  *  Author: Jacob
  */ 
 
-#include "../../io_descriptior/include/io_descriptor.h"
-
 #ifndef INPUT_H_
 #define INPUT_H_
+#include <stdint.h>
+#include "../../io_descriptior/include/io_descriptor.h"
 
 /**
 * Specifies the edge when the interrupt and callback is triggered.
 * Must be trigger_t.
 **/
 #define cb_trigger FALLING_EDGE
-
 
 /**
 * Configures the io and returns a DI struct.

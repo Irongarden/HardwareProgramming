@@ -6,7 +6,16 @@
  */ 
 
 #include <stdlib.h>
+#include <avr/io.h>
 #include "../include/io_descriptor.h"
+
+typedef struct io_desc {
+	volatile uint8_t* ddr;
+	volatile uint8_t* pin;
+	volatile uint8_t* port;
+	active_state_t active;
+	uint8_t bit;
+} io_desc_st;
 
 io_descriptor_t io_descriptor_init(port_t port, uint8_t bit, active_state_t active)
 {
@@ -88,6 +97,31 @@ io_descriptor_t io_descriptor_init(port_t port, uint8_t bit, active_state_t acti
 	}
 	
 	return desc;
+}
+
+volatile uint8_t* io_ddr(io_descriptor_t self)
+{
+	return self->ddr;
+}
+
+volatile uint8_t* io_pin(io_descriptor_t self)
+{
+	return self->pin;
+}
+
+volatile uint8_t* io_port(io_descriptor_t self)
+{
+	return self->port;
+}
+
+active_state_t io_active_state(io_descriptor_t self)
+{
+	return self->active;
+}
+
+uint8_t io_bit(io_descriptor_t self)
+{
+	return self->bit;
 }
 
 return_code_t io_descriptor_destroy(io_descriptor_t self)

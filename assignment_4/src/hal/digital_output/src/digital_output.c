@@ -12,7 +12,7 @@
 static void configure_output(io_descriptor_t output)
 {
 	// Initialize Data Direction Register for each output-pin.
-	*(output->ddr) |= _BV(output->bit);
+	*(io_ddr(output)) |= _BV(io_bit(output));
 }
 
 io_descriptor_t output_init(port_t port, uint8_t bit, active_state_t active, state_t default_state)
@@ -28,24 +28,24 @@ io_descriptor_t output_init(port_t port, uint8_t bit, active_state_t active, sta
 
 return_code_t output_set_state(io_descriptor_t output, state_t state)
 {
-	if (output->active == ACTIVE_LOW) {
+	if (io_active_state(output) == ACTIVE_LOW) {
 		if (state == ACTIVE) {
 			// Set port low.
-			*(output->port) &= ~_BV(output->bit);
+			*(io_port(output)) &= ~_BV(io_bit(output));
 		}
 		else {
 			// Set port high.
-			*(output->port) |= _BV(output->bit);
+			*(io_port(output)) |= _BV(io_bit(output));
 		}
 	}
 	else {
 		if (state == ACTIVE) {
 			// set port high.
-			*(output->port) |= _BV(output->bit);
+			*(io_port(output)) |= _BV(io_bit(output));
 		}
 		else {
 			// Set port low.
-			*(output->port) &= ~_BV(output->bit);
+			*(io_port(output)) &= ~_BV(io_bit(output));
 		}
 	}
 	

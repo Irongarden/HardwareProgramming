@@ -16,11 +16,11 @@ static void (*cb3)() = 0;
 static void configure_input(io_descriptor_t input, pull_up_t pull_up_res)
 {
 	// Initialize Data Direction Register for each input-pin.
-	*(input->ddr) &= ~_BV(input->bit);
+	*(io_ddr(input)) &= ~_BV(io_bit(input));
 		
 	// Enable Pull-ups on each input.
 	if (pull_up_res == PULL_UP)
-		*(input->port) |= _BV(input->bit);
+		*(io_port(input)) |= _BV(io_bit(input));
 }
 
 static void set_trigger(uint8_t reg0, uint8_t reg1, uint8_t int_n)
@@ -77,12 +77,13 @@ io_descriptor_t input_init(port_t port, uint8_t bit, active_state_t active, pull
 
 uint8_t input_activated(io_descriptor_t input)
 {
-	switch (input->active)
-	{
+	switch (io_active_state(input)) {
 		case ACTIVE_LOW:
-			return (((*input->pin) & _BV(input->bit)) == 0);
+			return (((*io_pin(input)) & _BV(io_bit(input))) == 0);
 		case ACTIVE_HIGH:
-			return !(((*input->pin) & _BV(input->bit)) == 0);
+			return !(((*io_pin(input)) & _BV(io_bit(input))) == 0);
+		case ANALOG:
+			return 0;
 		default:
 			return 0;
 	}

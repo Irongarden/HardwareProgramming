@@ -131,11 +131,11 @@ static void enable_input()
 			default:
 				break;
 		}
-		// Show current temperature when returning.
-		display_current = 3;
 		
 		// Display save 1s.
 		_delay_ms(1000);
+		// Show current temperature when returning.
+		display_current = 3;
 	}
 }
 
@@ -143,6 +143,7 @@ static void enable_input()
 static void run_solar_heating() {
 	t_filtered = kalman_filter(t_current);
 	
+	// check input keys for changeing display.
 	display_selector = key_scan();
 	
 	if (display_selector)
@@ -150,19 +151,34 @@ static void run_solar_heating() {
 	
 	keypad_current = matrix_keypad_get_x();
 	
+	switch (keypad_current) {
+		case KEYPAD_A:
+			display_current = 1;
+			break;
+		case KEYPAD_B:
+			display_current = 2;
+			break;
+		case KEYPAD_C:
+			display_current = 3;
+			break;
+		default:
+			break;
+	}
+
+	// set display.
 	switch (display_current)
 	{
 		case 1:
-			if (keypad_current == KEYPAD_INACTIVE || keypad_current == SAVE || keypad_current == CANCEL)
-				display_print_uint_4(t_low);
-			else 
+			if (keypad_current >= KEYPAD_0 && keypad_current <= KEYPAD_9)
 				enable_input();
+			else 
+				display_print_uint_4(t_low);
 			break;
 		case 2:
-			if (keypad_current == KEYPAD_INACTIVE || keypad_current == SAVE || keypad_current == CANCEL)
-				display_print_uint_4(t_high);
-			else
+			if (keypad_current >= KEYPAD_0 && keypad_current <= KEYPAD_9)
 				enable_input();
+			else
+				display_print_uint_4(t_high);
 			break;
 		case 3:
 			display_print_uint_4(t_filtered);
