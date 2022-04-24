@@ -4,11 +4,15 @@
 
 hal\digital_output\src\digital_output.c
 
-hal\digital_input\src\digital_input.c
+hal\input\src\input.c
+
+hal\io_descriptior\src\io_descriptor.c
 
 hal\key\src\key.c
 
 hal\led\src\led.c
+
+hal\matrix_keypad\src\matrix_keypad.c
 
 hal\pump\src\pump.c
 

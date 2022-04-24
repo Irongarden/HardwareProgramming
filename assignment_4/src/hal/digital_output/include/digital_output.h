@@ -9,10 +9,10 @@
 #define DIGITAL_OUTPUT_H_
 
 #include <stdint.h>
-#include "../../hal_definitions.h"
+#include "../../io_descriptior/include/io_descriptor.h"
 
-io_descriptor_t output_init(port_t port, uint8_t bit, active_state_t active, uint8_t init_stat, state_t default_state);
-return_code_t output_set_state(io_descriptor_t self, state_t state);
-return_code_t output_destroy(io_descriptor_t self);
+io_descriptor_t output_init(port_t port, uint8_t bit, active_state_t active, state_t default_state);
+return_code_t output_set_state(io_descriptor_t output, state_t state);
+return_code_t output_destroy(io_descriptor_t output);
 
 #endif /* DIGITAL_OUTPUT_H_ */

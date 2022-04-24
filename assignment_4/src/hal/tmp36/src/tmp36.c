@@ -5,14 +5,19 @@
  * Authors:	Mathias Hansen - 274392
  *			Jacob Norsted - 273962
  */ 
-#include "../include/tmp36.h"
+
+#include <stdlib.h>
+#include <avr/io.h>
 #include <avr/interrupt.h>
+#include "../include/tmp36.h"
+#include "../../digital_output/include/digital_output.h"
+#include "../../input/include/input.h"
 
-
-#define v_out PK7
-#define enable PG0
 
 static void (*cb)(uint8_t deg_c) = 0;
+
+static io_descriptor_t v_out;
+static io_descriptor_t enable;
 
 // Not static for testing purposes.
 uint8_t mv_to_c(uint16_t mv)
@@ -29,14 +34,10 @@ uint16_t adc_to_mv(uint16_t adc)
 
 void tmp36_init(void (*callback)(uint8_t deg_c))
 {
-	// **** General config *****
+	// configure io.
+	enable = output_init(ENABLE_PORT, ENABLE_PIN, ENABLE_ACTIVE_STATE, ENABLE_DEFAULT_STATE);
+	v_out = input_init(V_IN_PORT, V_IN_PIN, V_IN_ACTIVE_STATE, V_IN_PULL_UP, NULL);
 	
-	// Set PK7 direction as input (TMP36 Vout)
-	DDRK &= ~_BV(v_out);
-	
-	// Set PG0 direction as output (TMP36 Enable)
-	DDRG |= _BV(enable);  
-
 	// AVCC reference (5V).
 	ADMUX |= _BV(REFS0);
 	
@@ -49,8 +50,6 @@ void tmp36_init(void (*callback)(uint8_t deg_c))
 
 	// Enable ADC  
 	ADCSRA |= _BV(ADEN);
-	
-	// ****** General config end *************
 	
 	// ****** Interrupt and auto trigger ****
 	
@@ -89,7 +88,7 @@ void tmp36_init(void (*callback)(uint8_t deg_c))
 		cb = callback;
 	
 	// Enable TMP36
-	PORTG |= _BV(enable);
+	output_set_state(enable, ACTIVE);
 	
 	// Start Conversion.
 	ADCSRA |= _BV(ADSC);

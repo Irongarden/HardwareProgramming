@@ -37,24 +37,20 @@ c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/..
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_exit.o)
                               C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega2560/avr6/crtatmega2560.o (exit)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_tablejump2.o)
-                              hal/digital_output/src/digital_output.o (__tablejump2__)
+                              hal/io_descriptior/src/io_descriptor.o (__tablejump2__)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_copy_data.o)
-                              hal/seg7/src/seg7.o (__do_copy_data)
+                              hal/matrix_keypad/src/matrix_keypad.o (__do_copy_data)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_clear_bss.o)
-                              hal/digital_input/src/digital_input.o (__do_clear_bss)
+                              hal/input/src/input.o (__do_clear_bss)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_umulhisi3.o)
                               hal/seg7/src/seg7.o (__umulhisi3)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(malloc.o)
-                              hal/digital_output/src/digital_output.o (malloc)
+                              hal/io_descriptior/src/io_descriptor.o (malloc)
 
 Allocating common symbols
 Common symbol       size              file
 
-d_si                0x2               hal/seg7/src/seg7.o
 __brkval            0x2               c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(malloc.o)
-d_sck               0x2               hal/seg7/src/seg7.o
-d_segments          0x8               hal/seg7/src/seg7.o
-d_rck               0x2               hal/seg7/src/seg7.o
 __flp               0x2               c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(malloc.o)
 
 Discarded input sections
@@ -65,12 +61,17 @@ Discarded input sections
  .data          0x00000000        0x0 hal/digital_output/src/digital_output.o
  .bss           0x00000000        0x0 hal/digital_output/src/digital_output.o
  .text.output_destroy
-                0x00000000       0x10 hal/digital_output/src/digital_output.o
- .text          0x00000000        0x0 hal/digital_input/src/digital_input.o
- .data          0x00000000        0x0 hal/digital_input/src/digital_input.o
- .bss           0x00000000        0x0 hal/digital_input/src/digital_input.o
+                0x00000000        0x6 hal/digital_output/src/digital_output.o
+ .text          0x00000000        0x0 hal/input/src/input.o
+ .data          0x00000000        0x0 hal/input/src/input.o
+ .bss           0x00000000        0x0 hal/input/src/input.o
  .text.input_destroy
-                0x00000000       0x10 hal/digital_input/src/digital_input.o
+                0x00000000        0x6 hal/input/src/input.o
+ .text          0x00000000        0x0 hal/io_descriptior/src/io_descriptor.o
+ .data          0x00000000        0x0 hal/io_descriptior/src/io_descriptor.o
+ .bss           0x00000000        0x0 hal/io_descriptior/src/io_descriptor.o
+ .text.io_descriptor_destroy
+                0x00000000       0x10 hal/io_descriptior/src/io_descriptor.o
  .text          0x00000000        0x0 hal/key/src/key.o
  .data          0x00000000        0x0 hal/key/src/key.o
  .bss           0x00000000        0x0 hal/key/src/key.o
@@ -80,6 +81,9 @@ Discarded input sections
  .text.led_set  0x00000000       0x1c hal/led/src/led.o
  .text.led_lightbar
                 0x00000000       0x32 hal/led/src/led.o
+ .text          0x00000000        0x0 hal/matrix_keypad/src/matrix_keypad.o
+ .data          0x00000000        0x0 hal/matrix_keypad/src/matrix_keypad.o
+ .bss           0x00000000        0x0 hal/matrix_keypad/src/matrix_keypad.o
  .text          0x00000000        0x0 hal/pump/src/pump.o
  .data          0x00000000        0x0 hal/pump/src/pump.o
  .bss           0x00000000        0x0 hal/pump/src/pump.o
@@ -243,9 +247,11 @@ Linker script and memory map
 Address of section .data set to 0x800200
 LOAD C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega2560/avr6/crtatmega2560.o
 LOAD hal/digital_output/src/digital_output.o
-LOAD hal/digital_input/src/digital_input.o
+LOAD hal/input/src/input.o
+LOAD hal/io_descriptior/src/io_descriptor.o
 LOAD hal/key/src/key.o
 LOAD hal/led/src/led.o
+LOAD hal/matrix_keypad/src/matrix_keypad.o
 LOAD hal/pump/src/pump.o
 LOAD hal/seg7/src/seg7.o
 LOAD hal/tmp36/src/tmp36.o
@@ -360,55 +366,53 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000     0x16ee
+.text           0x00000000     0x1916
  *(.vectors)
  .vectors       0x00000000       0xe4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega2560/avr6/crtatmega2560.o
                 0x00000000                __vector_default
                 0x00000000                __vectors
  *(.vectors)
  *(.progmem.gcc*)
- .progmem.gcc_sw_table.output_init
-                0x000000e4        0xe hal/digital_output/src/digital_output.o
- .progmem.gcc_sw_table.input_init
-                0x000000f2        0xe hal/digital_input/src/digital_input.o
-                0x00000100                . = ALIGN (0x2)
-                0x00000100                __trampolines_start = .
+ .progmem.gcc_sw_table.io_descriptor_init
+                0x000000e4       0x16 hal/io_descriptior/src/io_descriptor.o
+                0x000000fa                . = ALIGN (0x2)
+                0x000000fa                __trampolines_start = .
  *(.trampolines)
- .trampolines   0x00000100        0x0 linker stubs
+ .trampolines   0x000000fa        0x0 linker stubs
  *(.trampolines*)
-                0x00000100                __trampolines_end = .
+                0x000000fa                __trampolines_end = .
  *libprintf_flt.a:*(.progmem.data)
  *libc.a:*(.progmem.data)
  *(.progmem*)
-                0x00000100                . = ALIGN (0x2)
+                0x000000fa                . = ALIGN (0x2)
  *(.jumptables)
  *(.jumptables*)
  *(.lowtext)
  *(.lowtext*)
-                0x00000100                __ctors_start = .
+                0x000000fa                __ctors_start = .
  *(.ctors)
-                0x00000100                __ctors_end = .
-                0x00000100                __dtors_start = .
+                0x000000fa                __ctors_end = .
+                0x000000fa                __dtors_start = .
  *(.dtors)
-                0x00000100                __dtors_end = .
+                0x000000fa                __dtors_end = .
  SORT(*)(.ctors)
  SORT(*)(.dtors)
  *(.init0)
- .init0         0x00000100        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega2560/avr6/crtatmega2560.o
-                0x00000100                __init
+ .init0         0x000000fa        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega2560/avr6/crtatmega2560.o
+                0x000000fa                __init
  *(.init0)
  *(.init1)
  *(.init1)
  *(.init2)
- .init2         0x00000100       0x10 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega2560/avr6/crtatmega2560.o
+ .init2         0x000000fa       0x10 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega2560/avr6/crtatmega2560.o
  *(.init2)
  *(.init3)
  *(.init3)
  *(.init4)
- .init4         0x00000110       0x1a c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_copy_data.o)
-                0x00000110                __do_copy_data
- .init4         0x0000012a       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_clear_bss.o)
-                0x0000012a                __do_clear_bss
+ .init4         0x0000010a       0x1a c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_copy_data.o)
+                0x0000010a                __do_copy_data
+ .init4         0x00000124       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_clear_bss.o)
+                0x00000124                __do_clear_bss
  *(.init4)
  *(.init5)
  *(.init5)
@@ -419,246 +423,265 @@ END GROUP
  *(.init8)
  *(.init8)
  *(.init9)
- .init9         0x0000013a        0x6 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega2560/avr6/crtatmega2560.o
+ .init9         0x00000134        0x6 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega2560/avr6/crtatmega2560.o
  *(.init9)
  *(.text)
- .text          0x00000140        0x2 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega2560/avr6/crtatmega2560.o
-                0x00000140                __vector_38
-                0x00000140                __vector_22
-                0x00000140                __vector_28
-                0x00000140                __vector_1
-                0x00000140                __vector_32
-                0x00000140                __vector_34
-                0x00000140                __vector_24
-                0x00000140                __vector_12
-                0x00000140                __vector_55
-                0x00000140                __vector_46
-                0x00000140                __bad_interrupt
-                0x00000140                __vector_6
-                0x00000140                __vector_31
-                0x00000140                __vector_35
-                0x00000140                __vector_39
-                0x00000140                __vector_23
-                0x00000140                __vector_30
-                0x00000140                __vector_45
-                0x00000140                __vector_25
-                0x00000140                __vector_11
-                0x00000140                __vector_54
-                0x00000140                __vector_13
-                0x00000140                __vector_17
-                0x00000140                __vector_19
-                0x00000140                __vector_56
-                0x00000140                __vector_7
-                0x00000140                __vector_49
-                0x00000140                __vector_41
-                0x00000140                __vector_43
-                0x00000140                __vector_27
-                0x00000140                __vector_5
-                0x00000140                __vector_33
-                0x00000140                __vector_47
-                0x00000140                __vector_52
-                0x00000140                __vector_37
-                0x00000140                __vector_44
-                0x00000140                __vector_51
-                0x00000140                __vector_9
-                0x00000140                __vector_2
-                0x00000140                __vector_21
-                0x00000140                __vector_15
-                0x00000140                __vector_36
-                0x00000140                __vector_40
-                0x00000140                __vector_8
-                0x00000140                __vector_26
-                0x00000140                __vector_48
-                0x00000140                __vector_14
-                0x00000140                __vector_53
-                0x00000140                __vector_10
-                0x00000140                __vector_50
-                0x00000140                __vector_16
-                0x00000140                __vector_18
-                0x00000140                __vector_20
-                0x00000142                . = ALIGN (0x2)
+ .text          0x0000013a        0x2 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega2560/avr6/crtatmega2560.o
+                0x0000013a                __vector_38
+                0x0000013a                __vector_22
+                0x0000013a                __vector_28
+                0x0000013a                __vector_1
+                0x0000013a                __vector_32
+                0x0000013a                __vector_34
+                0x0000013a                __vector_24
+                0x0000013a                __vector_12
+                0x0000013a                __vector_55
+                0x0000013a                __vector_46
+                0x0000013a                __bad_interrupt
+                0x0000013a                __vector_6
+                0x0000013a                __vector_31
+                0x0000013a                __vector_35
+                0x0000013a                __vector_39
+                0x0000013a                __vector_23
+                0x0000013a                __vector_30
+                0x0000013a                __vector_45
+                0x0000013a                __vector_25
+                0x0000013a                __vector_11
+                0x0000013a                __vector_54
+                0x0000013a                __vector_13
+                0x0000013a                __vector_17
+                0x0000013a                __vector_19
+                0x0000013a                __vector_56
+                0x0000013a                __vector_7
+                0x0000013a                __vector_49
+                0x0000013a                __vector_41
+                0x0000013a                __vector_43
+                0x0000013a                __vector_27
+                0x0000013a                __vector_5
+                0x0000013a                __vector_33
+                0x0000013a                __vector_47
+                0x0000013a                __vector_52
+                0x0000013a                __vector_37
+                0x0000013a                __vector_44
+                0x0000013a                __vector_51
+                0x0000013a                __vector_9
+                0x0000013a                __vector_2
+                0x0000013a                __vector_21
+                0x0000013a                __vector_15
+                0x0000013a                __vector_36
+                0x0000013a                __vector_40
+                0x0000013a                __vector_8
+                0x0000013a                __vector_26
+                0x0000013a                __vector_48
+                0x0000013a                __vector_14
+                0x0000013a                __vector_53
+                0x0000013a                __vector_10
+                0x0000013a                __vector_50
+                0x0000013a                __vector_16
+                0x0000013a                __vector_18
+                0x0000013a                __vector_20
+                0x0000013c                . = ALIGN (0x2)
  *(.text.*)
- .text.output_set_state
-                0x00000142       0x86 hal/digital_output/src/digital_output.o
-                0x00000142                output_set_state
  .text.configure_output
-                0x000001c8       0x2a hal/digital_output/src/digital_output.o
+                0x0000013c       0x24 hal/digital_output/src/digital_output.o
+ .text.output_set_state
+                0x00000160       0x86 hal/digital_output/src/digital_output.o
+                0x00000160                output_set_state
  .text.output_init
-                0x000001f2      0x12e hal/digital_output/src/digital_output.o
-                0x000001f2                output_init
+                0x000001e6       0x1e hal/digital_output/src/digital_output.o
+                0x000001e6                output_init
  .text.configure_input
-                0x00000320       0x3e hal/digital_input/src/digital_input.o
+                0x00000204       0x3e hal/input/src/input.o
  .text.set_trigger
-                0x0000035e       0x40 hal/digital_input/src/digital_input.o
+                0x00000242       0x40 hal/input/src/input.o
  .text.input_init
-                0x0000039e      0x180 hal/digital_input/src/digital_input.o
-                0x0000039e                input_init
+                0x00000282       0x68 hal/input/src/input.o
+                0x00000282                input_init
  .text.input_activated
-                0x0000051e       0x40 hal/digital_input/src/digital_input.o
-                0x0000051e                input_activated
+                0x000002ea       0x4a hal/input/src/input.o
+                0x000002ea                input_activated
  .text.__vector_3
-                0x0000055e       0x5a hal/digital_input/src/digital_input.o
-                0x0000055e                __vector_3
+                0x00000334       0x5a hal/input/src/input.o
+                0x00000334                __vector_3
  .text.__vector_4
-                0x000005b8       0x5a hal/digital_input/src/digital_input.o
-                0x000005b8                __vector_4
+                0x0000038e       0x5a hal/input/src/input.o
+                0x0000038e                __vector_4
+ .text.io_descriptor_init
+                0x000003e8      0x218 hal/io_descriptior/src/io_descriptor.o
+                0x000003e8                io_descriptor_init
  .text.key_init
-                0x00000612       0x50 hal/key/src/key.o
-                0x00000612                key_init
- .text.key_get  0x00000662       0x1e hal/key/src/key.o
-                0x00000662                key_get
+                0x00000600       0x50 hal/key/src/key.o
+                0x00000600                key_init
+ .text.key_get  0x00000650       0x1e hal/key/src/key.o
+                0x00000650                key_get
  .text.key_scan
-                0x00000680       0x1e hal/key/src/key.o
-                0x00000680                key_scan
+                0x0000066e       0x1e hal/key/src/key.o
+                0x0000066e                key_scan
  .text.led_init
-                0x0000069e       0x48 hal/led/src/led.o
-                0x0000069e                led_init
+                0x0000068c       0x42 hal/led/src/led.o
+                0x0000068c                led_init
+ .text.configure_io
+                0x000006ce       0x8e hal/matrix_keypad/src/matrix_keypad.o
+ .text.matrix_keypad_init
+                0x0000075c        0x4 hal/matrix_keypad/src/matrix_keypad.o
+                0x0000075c                matrix_keypad_init
+ .text.matrix_keypad_get_x
+                0x00000760       0x9c hal/matrix_keypad/src/matrix_keypad.o
+                0x00000760                matrix_keypad_get_x
  .text.pump_init
-                0x000006e6       0x1a hal/pump/src/pump.o
-                0x000006e6                pump_init
+                0x000007fc       0x14 hal/pump/src/pump.o
+                0x000007fc                pump_init
  .text.pump_start
-                0x00000700        0xe hal/pump/src/pump.o
-                0x00000700                pump_start
+                0x00000810        0xe hal/pump/src/pump.o
+                0x00000810                pump_start
  .text.pump_stop
-                0x0000070e        0xe hal/pump/src/pump.o
-                0x0000070e                pump_stop
+                0x0000081e        0xe hal/pump/src/pump.o
+                0x0000081e                pump_stop
  .text.set_refresh_rate
-                0x0000071c       0x32 hal/seg7/src/seg7.o
+                0x0000082c       0x32 hal/seg7/src/seg7.o
  .text.configure_spi
-                0x0000074e       0x26 hal/seg7/src/seg7.o
+                0x0000085e       0x26 hal/seg7/src/seg7.o
  .text.get_display_code
-                0x00000774       0x46 hal/seg7/src/seg7.o
+                0x00000884       0x46 hal/seg7/src/seg7.o
  .text.set_display_code
-                0x000007ba       0x2e hal/seg7/src/seg7.o
+                0x000008ca       0x2e hal/seg7/src/seg7.o
  .text.split_digits
-                0x000007e8       0xa0 hal/seg7/src/seg7.o
- .text.turn_off_segments
-                0x00000888       0x3c hal/seg7/src/seg7.o
+                0x000008f8       0xa0 hal/seg7/src/seg7.o
+ .text.increment_current_segment
+                0x00000998       0x1e hal/seg7/src/seg7.o
+ .text.configure_outputs
+                0x000009b6       0x7c hal/seg7/src/seg7.o
+ .text.turn_off_all_segments
+                0x00000a32       0x24 hal/seg7/src/seg7.o
  .text.toggle_pin
-                0x000008c4       0x34 hal/seg7/src/seg7.o
- .text.transfer_to_display
-                0x000008f8       0x10 hal/seg7/src/seg7.o
- .text.change_current_segment
-                0x00000908       0x1e hal/seg7/src/seg7.o
+                0x00000a56       0x16 hal/seg7/src/seg7.o
+ .text.transfer_next_to_display
+                0x00000a6c       0x10 hal/seg7/src/seg7.o
  .text.display_init
-                0x00000926       0xa8 hal/seg7/src/seg7.o
-                0x00000926                display_init
+                0x00000a7c        0x8 hal/seg7/src/seg7.o
+                0x00000a7c                display_init
  .text.display_print_uint_4
-                0x000009ce        0x8 hal/seg7/src/seg7.o
-                0x000009ce                display_print_uint_4
+                0x00000a84        0x8 hal/seg7/src/seg7.o
+                0x00000a84                display_print_uint_4
+ .text.display_save
+                0x00000a8c       0x20 hal/seg7/src/seg7.o
+                0x00000a8c                display_save
  .text.__vector_42
-                0x000009d6       0x8e hal/seg7/src/seg7.o
-                0x000009d6                __vector_42
- .text.mv_to_c  0x00000a64       0x1a hal/tmp36/src/tmp36.o
-                0x00000a64                mv_to_c
+                0x00000aac       0x72 hal/seg7/src/seg7.o
+                0x00000aac                __vector_42
+ .text.mv_to_c  0x00000b1e       0x1a hal/tmp36/src/tmp36.o
+                0x00000b1e                mv_to_c
  .text.adc_to_mv
-                0x00000a7e       0x18 hal/tmp36/src/tmp36.o
-                0x00000a7e                adc_to_mv
+                0x00000b38       0x18 hal/tmp36/src/tmp36.o
+                0x00000b38                adc_to_mv
  .text.tmp36_init
-                0x00000a96       0x9e hal/tmp36/src/tmp36.o
-                0x00000a96                tmp36_init
+                0x00000b50       0xc2 hal/tmp36/src/tmp36.o
+                0x00000b50                tmp36_init
  .text.__vector_29
-                0x00000b34       0x7a hal/tmp36/src/tmp36.o
-                0x00000b34                __vector_29
- .text.new_measurement
-                0x00000bae        0x6 main.o
+                0x00000c12       0x7a hal/tmp36/src/tmp36.o
+                0x00000c12                __vector_29
+ .text.tmp36_callback
+                0x00000c8c        0x6 main.o
+ .text.array_to_int
+                0x00000c92       0x36 main.o
  .text.util_init
-                0x00000bb4       0x56 main.o
- .text.shift_keys_init
-                0x00000c0a       0x36 main.o
- .text.segment_display_init
-                0x00000c40       0x4a main.o
+                0x00000cc8       0x56 main.o
  .text.leds_init_all
-                0x00000c8a       0x3e main.o
+                0x00000d1e       0x3e main.o
+ .text.shift_keys_init
+                0x00000d5c       0x36 main.o
  .text.hal_init
-                0x00000cc8       0x10 main.o
- .text.run      0x00000cd8       0x4e main.o
- .text.main     0x00000d26       0x1c main.o
-                0x00000d26                main
- .text.predict  0x00000d42       0x5a util/kalman_filter/src/kalman.o
+                0x00000d92       0x12 main.o
+ .text.enable_input
+                0x00000da4      0x118 main.o
+ .text.run_solar_heating
+                0x00000ebc       0x92 main.o
+ .text.main     0x00000f4e       0x1c main.o
+                0x00000f4e                main
+ .text.predict  0x00000f6a       0x5a util/kalman_filter/src/kalman.o
  .text.uncertenty
-                0x00000d9c       0x54 util/kalman_filter/src/kalman.o
+                0x00000fc4       0x54 util/kalman_filter/src/kalman.o
  .text.kalman_init
-                0x00000df0       0x86 util/kalman_filter/src/kalman.o
-                0x00000df0                kalman_init
+                0x00001018       0x86 util/kalman_filter/src/kalman.o
+                0x00001018                kalman_init
  .text.kalman_filter
-                0x00000e76      0x1e0 util/kalman_filter/src/kalman.o
-                0x00000e76                kalman_filter
+                0x0000109e      0x1e0 util/kalman_filter/src/kalman.o
+                0x0000109e                kalman_filter
  .text.avr-libc.fplib
-                0x00001056        0xa c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(addsf3.o)
-                0x00001056                __subsf3
-                0x00001058                __addsf3
+                0x0000127e        0xa c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(addsf3.o)
+                0x0000127e                __subsf3
+                0x00001280                __addsf3
  .text.avr-libc.fplib
-                0x00001060       0xc0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(addsf3x.o)
-                0x0000107a                __addsf3x
+                0x00001288       0xc0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(addsf3x.o)
+                0x000012a2                __addsf3x
  .text.avr-libc.fplib
-                0x00001120        0x8 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(cmpsf2.o)
-                0x00001120                __nesf2
-                0x00001120                __eqsf2
-                0x00001120                __cmpsf2
-                0x00001120                __ltsf2
-                0x00001120                __lesf2
+                0x00001348        0x8 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(cmpsf2.o)
+                0x00001348                __nesf2
+                0x00001348                __eqsf2
+                0x00001348                __cmpsf2
+                0x00001348                __ltsf2
+                0x00001348                __lesf2
  .text.avr-libc.fplib
-                0x00001128        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(divsf3.o)
-                0x00001128                __divsf3
+                0x00001350        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(divsf3.o)
+                0x00001350                __divsf3
  .text.avr-libc.fplib
-                0x0000112c       0xcc c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(divsf3x.o)
-                0x00001142                __divsf3x
-                0x00001146                __divsf3_pse
+                0x00001354       0xcc c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(divsf3x.o)
+                0x0000136a                __divsf3x
+                0x0000136e                __divsf3_pse
  .text.avr-libc.fplib
-                0x000011f8       0x58 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(fixunssfsi.o)
-                0x000011f8                __fixunssfsi
+                0x00001420       0x58 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(fixunssfsi.o)
+                0x00001420                __fixunssfsi
  .text.avr-libc.fplib
-                0x00001250       0x7a c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(floatsisf.o)
-                0x00001250                __floatunsisf
-                0x00001254                __floatsisf
+                0x00001478       0x7a c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(floatsisf.o)
+                0x00001478                __floatunsisf
+                0x0000147c                __floatsisf
  .text.avr-libc.fplib
-                0x000012ca       0x48 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(fp_cmp.o)
-                0x000012ca                __fp_cmp
+                0x000014f2       0x48 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(fp_cmp.o)
+                0x000014f2                __fp_cmp
  .text.avr-libc.fplib
-                0x00001312        0xc c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(fp_inf.o)
-                0x00001312                __fp_inf
+                0x0000153a        0xc c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(fp_inf.o)
+                0x0000153a                __fp_inf
  .text.avr-libc.fplib
-                0x0000131e        0x6 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(fp_nan.o)
-                0x0000131e                __fp_nan
+                0x00001546        0x6 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(fp_nan.o)
+                0x00001546                __fp_nan
  .text.avr-libc.fplib
-                0x00001324        0xe c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(fp_pscA.o)
-                0x00001324                __fp_pscA
+                0x0000154c        0xe c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(fp_pscA.o)
+                0x0000154c                __fp_pscA
  .text.avr-libc.fplib
-                0x00001332        0xe c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(fp_pscB.o)
-                0x00001332                __fp_pscB
+                0x0000155a        0xe c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(fp_pscB.o)
+                0x0000155a                __fp_pscB
  .text.avr-libc.fplib
-                0x00001340       0x22 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(fp_round.o)
-                0x00001340                __fp_round
+                0x00001568       0x22 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(fp_round.o)
+                0x00001568                __fp_round
  .text.avr-libc.fplib
-                0x00001362       0x44 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(fp_split3.o)
-                0x00001362                __fp_split3
-                0x00001372                __fp_splitA
+                0x0000158a       0x44 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(fp_split3.o)
+                0x0000158a                __fp_split3
+                0x0000159a                __fp_splitA
  .text.avr-libc.fplib
-                0x000013a6        0xe c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(fp_zero.o)
-                0x000013a6                __fp_zero
-                0x000013a8                __fp_szero
+                0x000015ce        0xe c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(fp_zero.o)
+                0x000015ce                __fp_zero
+                0x000015d0                __fp_szero
  .text.avr-libc.fplib
-                0x000013b4        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(mulsf3.o)
-                0x000013b4                __mulsf3
+                0x000015dc        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(mulsf3.o)
+                0x000015dc                __mulsf3
  .text.avr-libc.fplib
-                0x000013b8       0xc2 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(mulsf3x.o)
-                0x000013cc                __mulsf3x
-                0x000013d0                __mulsf3_pse
- .text.libgcc   0x0000147a       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_tablejump2.o)
-                0x0000147a                __tablejump2__
+                0x000015e0       0xc2 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(mulsf3x.o)
+                0x000015f4                __mulsf3x
+                0x000015f8                __mulsf3_pse
+ .text.libgcc   0x000016a2       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_tablejump2.o)
+                0x000016a2                __tablejump2__
  .text.libgcc.mul
-                0x0000148a       0x1e c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_umulhisi3.o)
-                0x0000148a                __umulhisi3
+                0x000016b2       0x1e c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_umulhisi3.o)
+                0x000016b2                __umulhisi3
  .text.avr-libc
-                0x000014a8      0x242 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(malloc.o)
-                0x000014a8                malloc
-                0x000015d8                free
-                0x000016ea                . = ALIGN (0x2)
+                0x000016d0      0x242 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(malloc.o)
+                0x000016d0                malloc
+                0x00001800                free
+                0x00001912                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x000016ea        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_exit.o)
-                0x000016ea                _exit
-                0x000016ea                exit
+ .fini9         0x00001912        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_exit.o)
+                0x00001912                _exit
+                0x00001912                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -677,11 +700,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x000016ea        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_exit.o)
+ .fini0         0x00001912        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_exit.o)
  *(.fini0)
-                0x000016ee                _etext = .
+                0x00001916                _etext = .
 
-.data           0x00800200       0x36 load address 0x000016ee
+.data           0x00800200       0x48 load address 0x00001916
                 0x00800200                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800200        0x6 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(malloc.o)
@@ -691,63 +714,75 @@ END GROUP
  *(.data*)
  .data.leading_zeros
                 0x00800206        0x1 hal/seg7/src/seg7.o
- .data.display_current
+ .data.keypad_current
                 0x00800207        0x1 main.o
- .data._x       0x00800208        0x4 util/kalman_filter/src/kalman.o
- .data._cov     0x0080020c        0x4 util/kalman_filter/src/kalman.o
+ .data.display_current
+                0x00800208        0x1 main.o
+ .data.t_high   0x00800209        0x2 main.o
+ .data.t_low    0x0080020b        0x2 main.o
+ .data._x       0x0080020d        0x4 util/kalman_filter/src/kalman.o
+ .data._cov     0x00800211        0x4 util/kalman_filter/src/kalman.o
  *(.gnu.linkonce.d*)
  *(.rodata)
- .rodata        0x00800210       0x1c main.o
+ .rodata        0x00800215       0x14 main.o
  *(.rodata*)
+ .rodata.keypad
+                0x00800229       0x10 hal/matrix_keypad/src/matrix_keypad.o
+ .rodata.display_code_save
+                0x00800239        0x4 hal/seg7/src/seg7.o
  .rodata.display_code
-                0x0080022c        0xa hal/seg7/src/seg7.o
+                0x0080023d        0xa hal/seg7/src/seg7.o
  *(.gnu.linkonce.r*)
-                0x00800236                . = ALIGN (0x2)
-                0x00800236                _edata = .
-                0x00800236                PROVIDE (__data_end, .)
+                0x00800248                . = ALIGN (0x2)
+ *fill*         0x00800247        0x1 
+                0x00800248                _edata = .
+                0x00800248                PROVIDE (__data_end, .)
 
-.bss            0x00800236       0x4d
-                0x00800236                PROVIDE (__bss_start, .)
+.bss            0x00800248       0x61
+                0x00800248                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
- .bss.cb3       0x00800236        0x2 hal/digital_input/src/digital_input.o
- .bss.cb2       0x00800238        0x2 hal/digital_input/src/digital_input.o
- .bss.keys      0x0080023a        0x6 hal/key/src/key.o
- .bss.leds      0x00800240        0xe hal/led/src/led.o
- .bss.pump      0x0080024e        0x2 hal/pump/src/pump.o
- .bss.display   0x00800250        0x4 hal/seg7/src/seg7.o
- .bss.digits    0x00800254        0x4 hal/seg7/src/seg7.o
+ .bss.cb3       0x00800248        0x2 hal/input/src/input.o
+ .bss.cb2       0x0080024a        0x2 hal/input/src/input.o
+ .bss.keys      0x0080024c        0x6 hal/key/src/key.o
+ .bss.leds      0x00800252       0x10 hal/led/src/led.o
+ .bss.col       0x00800262        0x8 hal/matrix_keypad/src/matrix_keypad.o
+ .bss.row       0x0080026a        0x8 hal/matrix_keypad/src/matrix_keypad.o
+ .bss.pump      0x00800272        0x2 hal/pump/src/pump.o
+ .bss.d_si      0x00800274        0x2 hal/seg7/src/seg7.o
+ .bss.d_sck     0x00800276        0x2 hal/seg7/src/seg7.o
+ .bss.d_rck     0x00800278        0x2 hal/seg7/src/seg7.o
+ .bss.d_segments
+                0x0080027a        0x8 hal/seg7/src/seg7.o
+ .bss.display   0x00800282        0x4 hal/seg7/src/seg7.o
+ .bss.digits    0x00800286        0x4 hal/seg7/src/seg7.o
  .bss.current_segment
-                0x00800258        0x1 hal/seg7/src/seg7.o
- .bss.cb        0x00800259        0x2 hal/tmp36/src/tmp36.o
+                0x0080028a        0x1 hal/seg7/src/seg7.o
+ .bss.enable    0x0080028b        0x2 hal/tmp36/src/tmp36.o
+ .bss.cb        0x0080028d        0x2 hal/tmp36/src/tmp36.o
  .bss.t_filtered
-                0x0080025b        0x1 main.o
+                0x0080028f        0x1 main.o
  .bss.t_current
-                0x0080025c        0x1 main.o
- .bss._c        0x0080025d        0x4 util/kalman_filter/src/kalman.o
- .bss._b        0x00800261        0x4 util/kalman_filter/src/kalman.o
- .bss._a        0x00800265        0x4 util/kalman_filter/src/kalman.o
- .bss._q        0x00800269        0x4 util/kalman_filter/src/kalman.o
- .bss._r        0x0080026d        0x4 util/kalman_filter/src/kalman.o
+                0x00800290        0x1 main.o
+ .bss._c        0x00800291        0x4 util/kalman_filter/src/kalman.o
+ .bss._b        0x00800295        0x4 util/kalman_filter/src/kalman.o
+ .bss._a        0x00800299        0x4 util/kalman_filter/src/kalman.o
+ .bss._q        0x0080029d        0x4 util/kalman_filter/src/kalman.o
+ .bss._r        0x008002a1        0x4 util/kalman_filter/src/kalman.o
  *(COMMON)
- COMMON         0x00800271        0xe hal/seg7/src/seg7.o
-                0x00800271                d_si
-                0x00800273                d_sck
-                0x00800275                d_segments
-                0x0080027d                d_rck
- COMMON         0x0080027f        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(malloc.o)
-                0x0080027f                __brkval
-                0x00800281                __flp
-                0x00800283                PROVIDE (__bss_end, .)
-                0x000016ee                __data_load_start = LOADADDR (.data)
-                0x00001724                __data_load_end = (__data_load_start + SIZEOF (.data))
+ COMMON         0x008002a5        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(malloc.o)
+                0x008002a5                __brkval
+                0x008002a7                __flp
+                0x008002a9                PROVIDE (__bss_end, .)
+                0x00001916                __data_load_start = LOADADDR (.data)
+                0x0000195e                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x00800283        0x0
+.noinit         0x008002a9        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
  *(.noinit*)
                 [!provide]                PROVIDE (__noinit_end, .)
-                0x00800283                _end = .
-                0x00800283                PROVIDE (__heap_start, .)
+                0x008002a9                _end = .
+                0x008002a9                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
  *(.eeprom*)
@@ -790,9 +825,11 @@ END GROUP
  *(.comment)
  .comment       0x00000000       0x30 hal/digital_output/src/digital_output.o
                                  0x31 (size before relaxing)
- .comment       0x00000030       0x31 hal/digital_input/src/digital_input.o
+ .comment       0x00000030       0x31 hal/input/src/input.o
+ .comment       0x00000030       0x31 hal/io_descriptior/src/io_descriptor.o
  .comment       0x00000030       0x31 hal/key/src/key.o
  .comment       0x00000030       0x31 hal/led/src/led.o
+ .comment       0x00000030       0x31 hal/matrix_keypad/src/matrix_keypad.o
  .comment       0x00000030       0x31 hal/pump/src/pump.o
  .comment       0x00000030       0x31 hal/seg7/src/seg7.o
  .comment       0x00000030       0x31 hal/tmp36/src/tmp36.o
@@ -820,114 +857,131 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000      0x258
+.debug_aranges  0x00000000      0x2c8
  *(.debug_aranges)
  .debug_aranges
                 0x00000000       0x38 hal/digital_output/src/digital_output.o
  .debug_aranges
-                0x00000038       0x50 hal/digital_input/src/digital_input.o
+                0x00000038       0x50 hal/input/src/input.o
  .debug_aranges
-                0x00000088       0x30 hal/key/src/key.o
+                0x00000088       0x28 hal/io_descriptior/src/io_descriptor.o
  .debug_aranges
-                0x000000b8       0x30 hal/led/src/led.o
+                0x000000b0       0x30 hal/key/src/key.o
  .debug_aranges
-                0x000000e8       0x30 hal/pump/src/pump.o
+                0x000000e0       0x30 hal/led/src/led.o
  .debug_aranges
-                0x00000118       0x78 hal/seg7/src/seg7.o
+                0x00000110       0x30 hal/matrix_keypad/src/matrix_keypad.o
  .debug_aranges
-                0x00000190       0x38 hal/tmp36/src/tmp36.o
+                0x00000140       0x30 hal/pump/src/pump.o
  .debug_aranges
-                0x000001c8       0x58 main.o
+                0x00000170       0x88 hal/seg7/src/seg7.o
  .debug_aranges
-                0x00000220       0x38 util/kalman_filter/src/kalman.o
+                0x000001f8       0x38 hal/tmp36/src/tmp36.o
+ .debug_aranges
+                0x00000230       0x60 main.o
+ .debug_aranges
+                0x00000290       0x38 util/kalman_filter/src/kalman.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x2908
+.debug_info     0x00000000     0x33d1
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0xbbc C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega2560/avr6/crtatmega2560.o
- .debug_info    0x00000bbc      0x33f hal/digital_output/src/digital_output.o
- .debug_info    0x00000efb      0x3f4 hal/digital_input/src/digital_input.o
- .debug_info    0x000012ef      0x2aa hal/key/src/key.o
- .debug_info    0x00001599      0x2ed hal/led/src/led.o
- .debug_info    0x00001886      0x23e hal/pump/src/pump.o
- .debug_info    0x00001ac4      0x5e6 hal/seg7/src/seg7.o
- .debug_info    0x000020aa      0x154 hal/tmp36/src/tmp36.o
- .debug_info    0x000021fe      0x4ff main.o
- .debug_info    0x000026fd      0x20b util/kalman_filter/src/kalman.o
+ .debug_info    0x00000bbc      0x325 hal/digital_output/src/digital_output.o
+ .debug_info    0x00000ee1      0x40f hal/input/src/input.o
+ .debug_info    0x000012f0      0x24d hal/io_descriptior/src/io_descriptor.o
+ .debug_info    0x0000153d      0x2be hal/key/src/key.o
+ .debug_info    0x000017fb      0x2fc hal/led/src/led.o
+ .debug_info    0x00001af7      0x420 hal/matrix_keypad/src/matrix_keypad.o
+ .debug_info    0x00001f17      0x249 hal/pump/src/pump.o
+ .debug_info    0x00002160      0x68c hal/seg7/src/seg7.o
+ .debug_info    0x000027ec      0x304 hal/tmp36/src/tmp36.o
+ .debug_info    0x00002af0      0x6d6 main.o
+ .debug_info    0x000031c6      0x20b util/kalman_filter/src/kalman.o
 
-.debug_abbrev   0x00000000     0x1832
+.debug_abbrev   0x00000000     0x1b58
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0xb1a C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega2560/avr6/crtatmega2560.o
  .debug_abbrev  0x00000b1a      0x159 hal/digital_output/src/digital_output.o
- .debug_abbrev  0x00000c73      0x18c hal/digital_input/src/digital_input.o
- .debug_abbrev  0x00000dff      0x186 hal/key/src/key.o
- .debug_abbrev  0x00000f85      0x16c hal/led/src/led.o
- .debug_abbrev  0x000010f1      0x101 hal/pump/src/pump.o
- .debug_abbrev  0x000011f2      0x22c hal/seg7/src/seg7.o
- .debug_abbrev  0x0000141e      0x102 hal/tmp36/src/tmp36.o
- .debug_abbrev  0x00001520      0x1fa main.o
- .debug_abbrev  0x0000171a      0x118 util/kalman_filter/src/kalman.o
+ .debug_abbrev  0x00000c73      0x18c hal/input/src/input.o
+ .debug_abbrev  0x00000dff      0x125 hal/io_descriptior/src/io_descriptor.o
+ .debug_abbrev  0x00000f24      0x186 hal/key/src/key.o
+ .debug_abbrev  0x000010aa      0x16c hal/led/src/led.o
+ .debug_abbrev  0x00001216      0x17a hal/matrix_keypad/src/matrix_keypad.o
+ .debug_abbrev  0x00001390      0x101 hal/pump/src/pump.o
+ .debug_abbrev  0x00001491      0x1ed hal/seg7/src/seg7.o
+ .debug_abbrev  0x0000167e      0x18f hal/tmp36/src/tmp36.o
+ .debug_abbrev  0x0000180d      0x233 main.o
+ .debug_abbrev  0x00001a40      0x118 util/kalman_filter/src/kalman.o
 
-.debug_line     0x00000000     0x169a
+.debug_line     0x00000000     0x1c77
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x1fa C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega2560/avr6/crtatmega2560.o
- .debug_line    0x000001fa      0x282 hal/digital_output/src/digital_output.o
- .debug_line    0x0000047c      0x343 hal/digital_input/src/digital_input.o
- .debug_line    0x000007bf      0x1d6 hal/key/src/key.o
- .debug_line    0x00000995      0x1b7 hal/led/src/led.o
- .debug_line    0x00000b4c      0x189 hal/pump/src/pump.o
- .debug_line    0x00000cd5      0x3a7 hal/seg7/src/seg7.o
- .debug_line    0x0000107c      0x17b hal/tmp36/src/tmp36.o
- .debug_line    0x000011f7      0x349 main.o
- .debug_line    0x00001540      0x15a util/kalman_filter/src/kalman.o
+ .debug_line    0x000001fa      0x199 hal/digital_output/src/digital_output.o
+ .debug_line    0x00000393      0x20c hal/input/src/input.o
+ .debug_line    0x0000059f      0x2b4 hal/io_descriptior/src/io_descriptor.o
+ .debug_line    0x00000853      0x1d3 hal/key/src/key.o
+ .debug_line    0x00000a26      0x1cc hal/led/src/led.o
+ .debug_line    0x00000bf2      0x262 hal/matrix_keypad/src/matrix_keypad.o
+ .debug_line    0x00000e54      0x198 hal/pump/src/pump.o
+ .debug_line    0x00000fec      0x407 hal/seg7/src/seg7.o
+ .debug_line    0x000013f3      0x251 hal/tmp36/src/tmp36.o
+ .debug_line    0x00001644      0x4d9 main.o
+ .debug_line    0x00001b1d      0x15a util/kalman_filter/src/kalman.o
 
-.debug_frame    0x00000000      0x6f4
+.debug_frame    0x00000000      0x7c0
  *(.debug_frame)
- .debug_frame   0x00000000       0x78 hal/digital_output/src/digital_output.o
- .debug_frame   0x00000078      0x13c hal/digital_input/src/digital_input.o
- .debug_frame   0x000001b4       0x70 hal/key/src/key.o
- .debug_frame   0x00000224       0x70 hal/led/src/led.o
- .debug_frame   0x00000294       0x4c hal/pump/src/pump.o
- .debug_frame   0x000002e0      0x174 hal/seg7/src/seg7.o
- .debug_frame   0x00000454       0xa4 hal/tmp36/src/tmp36.o
- .debug_frame   0x000004f8       0xfc main.o
- .debug_frame   0x000005f4      0x100 util/kalman_filter/src/kalman.o
+ .debug_frame   0x00000000       0x64 hal/digital_output/src/digital_output.o
+ .debug_frame   0x00000064      0x138 hal/input/src/input.o
+ .debug_frame   0x0000019c       0x44 hal/io_descriptior/src/io_descriptor.o
+ .debug_frame   0x000001e0       0x70 hal/key/src/key.o
+ .debug_frame   0x00000250       0x6c hal/led/src/led.o
+ .debug_frame   0x000002bc       0x78 hal/matrix_keypad/src/matrix_keypad.o
+ .debug_frame   0x00000334       0x44 hal/pump/src/pump.o
+ .debug_frame   0x00000378      0x178 hal/seg7/src/seg7.o
+ .debug_frame   0x000004f0       0xb8 hal/tmp36/src/tmp36.o
+ .debug_frame   0x000005a8      0x118 main.o
+ .debug_frame   0x000006c0      0x100 util/kalman_filter/src/kalman.o
 
-.debug_str      0x00000000      0xb09
+.debug_str      0x00000000      0xbe5
  *(.debug_str)
  .debug_str     0x00000000      0x3e6 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega2560/avr6/crtatmega2560.o
- .debug_str     0x000003e6      0x24f hal/digital_output/src/digital_output.o
-                                0x29f (size before relaxing)
- .debug_str     0x00000635       0xdd hal/digital_input/src/digital_input.o
-                                0x2dc (size before relaxing)
- .debug_str     0x00000712       0x54 hal/key/src/key.o
-                                0x24c (size before relaxing)
- .debug_str     0x00000766       0x45 hal/led/src/led.o
-                                0x265 (size before relaxing)
- .debug_str     0x000007ab       0x3b hal/pump/src/pump.o
-                                0x249 (size before relaxing)
- .debug_str     0x000007e6      0x13e hal/seg7/src/seg7.o
-                                0x385 (size before relaxing)
- .debug_str     0x00000924       0x89 hal/tmp36/src/tmp36.o
-                                0x1b4 (size before relaxing)
- .debug_str     0x000009ad      0x116 main.o
-                                0x322 (size before relaxing)
- .debug_str     0x00000ac3       0x46 util/kalman_filter/src/kalman.o
+ .debug_str     0x000003e6      0x255 hal/digital_output/src/digital_output.o
+                                0x2a5 (size before relaxing)
+ .debug_str     0x0000063b       0xcd hal/input/src/input.o
+                                0x2dd (size before relaxing)
+ .debug_str     0x00000708       0x3b hal/io_descriptior/src/io_descriptor.o
+                                0x24a (size before relaxing)
+ .debug_str     0x00000743       0x54 hal/key/src/key.o
+                                0x245 (size before relaxing)
+ .debug_str     0x00000797       0x45 hal/led/src/led.o
+                                0x25e (size before relaxing)
+ .debug_str     0x000007dc       0x64 hal/matrix_keypad/src/matrix_keypad.o
+                                0x28b (size before relaxing)
+ .debug_str     0x00000840       0x3b hal/pump/src/pump.o
+                                0x242 (size before relaxing)
+ .debug_str     0x0000087b      0x176 hal/seg7/src/seg7.o
+                                0x3a9 (size before relaxing)
+ .debug_str     0x000009f1       0x4f hal/tmp36/src/tmp36.o
+                                0x268 (size before relaxing)
+ .debug_str     0x00000a40      0x153 main.o
+                                0x39f (size before relaxing)
+ .debug_str     0x00000b93       0x52 util/kalman_filter/src/kalman.o
                                 0x1e5 (size before relaxing)
 
-.debug_loc      0x00000000     0x140b
+.debug_loc      0x00000000     0x1636
  *(.debug_loc)
- .debug_loc     0x00000000      0x25d hal/digital_output/src/digital_output.o
- .debug_loc     0x0000025d      0x3e6 hal/digital_input/src/digital_input.o
- .debug_loc     0x00000643      0x14f hal/key/src/key.o
- .debug_loc     0x00000792      0x1a3 hal/led/src/led.o
- .debug_loc     0x00000935       0x22 hal/pump/src/pump.o
- .debug_loc     0x00000957      0x4a8 hal/seg7/src/seg7.o
- .debug_loc     0x00000dff      0x169 hal/tmp36/src/tmp36.o
- .debug_loc     0x00000f68      0x194 main.o
- .debug_loc     0x000010fc      0x30f util/kalman_filter/src/kalman.o
+ .debug_loc     0x00000000      0x179 hal/digital_output/src/digital_output.o
+ .debug_loc     0x00000179      0x3a0 hal/input/src/input.o
+ .debug_loc     0x00000519      0x1a2 hal/io_descriptior/src/io_descriptor.o
+ .debug_loc     0x000006bb      0x14f hal/key/src/key.o
+ .debug_loc     0x0000080a      0x196 hal/led/src/led.o
+ .debug_loc     0x000009a0      0x116 hal/matrix_keypad/src/matrix_keypad.o
+ .debug_loc     0x00000ab6      0x397 hal/seg7/src/seg7.o
+ .debug_loc     0x00000e4d      0x1c0 hal/tmp36/src/tmp36.o
+ .debug_loc     0x0000100d      0x31a main.o
+ .debug_loc     0x00001327      0x30f util/kalman_filter/src/kalman.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -947,17 +1001,19 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x00000000      0x1f8
+.debug_ranges   0x00000000      0x290
  *(.debug_ranges)
  .debug_ranges  0x00000000       0x28 hal/digital_output/src/digital_output.o
- .debug_ranges  0x00000028       0x40 hal/digital_input/src/digital_input.o
- .debug_ranges  0x00000068       0x38 hal/key/src/key.o
- .debug_ranges  0x000000a0       0x38 hal/led/src/led.o
- .debug_ranges  0x000000d8       0x20 hal/pump/src/pump.o
- .debug_ranges  0x000000f8       0x68 hal/seg7/src/seg7.o
- .debug_ranges  0x00000160       0x28 hal/tmp36/src/tmp36.o
- .debug_ranges  0x00000188       0x48 main.o
- .debug_ranges  0x000001d0       0x28 util/kalman_filter/src/kalman.o
+ .debug_ranges  0x00000028       0x40 hal/input/src/input.o
+ .debug_ranges  0x00000068       0x18 hal/io_descriptior/src/io_descriptor.o
+ .debug_ranges  0x00000080       0x38 hal/key/src/key.o
+ .debug_ranges  0x000000b8       0x38 hal/led/src/led.o
+ .debug_ranges  0x000000f0       0x20 hal/matrix_keypad/src/matrix_keypad.o
+ .debug_ranges  0x00000110       0x20 hal/pump/src/pump.o
+ .debug_ranges  0x00000130       0x78 hal/seg7/src/seg7.o
+ .debug_ranges  0x000001a8       0x28 hal/tmp36/src/tmp36.o
+ .debug_ranges  0x000001d0       0x98 main.o
+ .debug_ranges  0x00000268       0x28 util/kalman_filter/src/kalman.o
 
 .debug_macro
  *(.debug_macro)

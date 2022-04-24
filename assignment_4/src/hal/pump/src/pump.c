@@ -11,7 +11,7 @@ static io_descriptor_t pump;
 
 void pump_init()
 {
-	pump = output_init(P_PORT, P_PIN, P_ACTIVE_STATE, 1, P_DEFAULT_STATE);
+	pump = output_init(P_PORT, P_PIN, P_ACTIVE_STATE, P_DEFAULT_STATE);
 }
 
 return_code_t pump_start()

@@ -15,7 +15,7 @@ hal/digital_output/src/digital_output.d \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\fuse.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h \
  ../hal/digital_output/src/../include/digital_output.h \
- ../hal/digital_output/src/../include/../../hal_definitions.h
+ ../hal/digital_output/src/../include/../../io_descriptior/include/io_descriptor.h
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdlib.h:
 
@@ -45,4 +45,4 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 
 ../hal/digital_output/src/../include/digital_output.h:
 
-../hal/digital_output/src/../include/../../hal_definitions.h:
+../hal/digital_output/src/../include/../../io_descriptior/include/io_descriptor.h:

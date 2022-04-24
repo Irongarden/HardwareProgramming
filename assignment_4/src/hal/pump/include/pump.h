@@ -13,7 +13,7 @@
 
 #include "../../digital_output/include/digital_output.h"
 #include "../../../include/definitions.h"
-#include "../../hal_definitions.h"
+#include "../../io_descriptior/include/io_descriptor.h"
 
 #define P_PORT			PUMP_PORT
 #define P_PIN				PUMP_PIN

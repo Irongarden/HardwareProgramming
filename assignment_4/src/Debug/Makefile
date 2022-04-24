@@ -34,18 +34,24 @@ LINKER_SCRIPT_DEP:=
 # Every subdirectory with source files must be described here
 SUBDIRS :=  \
 ../hal \
-../hal/digital_input \
-../hal/digital_input/include \
-../hal/digital_input/src \
+../hal/input \
+../hal/input/include \
+../hal/input/src \
 ../hal/digital_output \
 ../hal/digital_output/include \
 ../hal/digital_output/src \
+../hal/io_descriptior/include \
+../hal/io_descriptior/src \
 ../hal/key \
 ../hal/key/include \
 ../hal/key/src \
 ../hal/led/ \
 ../hal/led/include/ \
 ../hal/led/src/ \
+../hal/matrix_keypad \
+../hal/matrix_keypad/include \
+../hal/matrix_keypad/src \
+../hal/io_descriptior \
 ../hal/pump \
 ../hal/pump/include \
 ../hal/pump/src \
@@ -65,9 +71,11 @@ SUBDIRS :=  \
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
 ../hal/digital_output/src/digital_output.c \
-../hal/digital_input/src/digital_input.c \
+../hal/input/src/input.c \
+../hal/io_descriptior/src/io_descriptor.c \
 ../hal/key/src/key.c \
 ../hal/led/src/led.c \
+../hal/matrix_keypad/src/matrix_keypad.c \
 ../hal/pump/src/pump.c \
 ../hal/seg7/src/seg7.c \
 ../hal/tmp36/src/tmp36.c \
@@ -83,9 +91,11 @@ ASM_SRCS +=
 
 OBJS +=  \
 hal/digital_output/src/digital_output.o \
-hal/digital_input/src/digital_input.o \
+hal/input/src/input.o \
+hal/io_descriptior/src/io_descriptor.o \
 hal/key/src/key.o \
 hal/led/src/led.o \
+hal/matrix_keypad/src/matrix_keypad.o \
 hal/pump/src/pump.o \
 hal/seg7/src/seg7.o \
 hal/tmp36/src/tmp36.o \
@@ -94,9 +104,11 @@ util/kalman_filter/src/kalman.o
 
 OBJS_AS_ARGS +=  \
 hal/digital_output/src/digital_output.o \
-hal/digital_input/src/digital_input.o \
+hal/input/src/input.o \
+hal/io_descriptior/src/io_descriptor.o \
 hal/key/src/key.o \
 hal/led/src/led.o \
+hal/matrix_keypad/src/matrix_keypad.o \
 hal/pump/src/pump.o \
 hal/seg7/src/seg7.o \
 hal/tmp36/src/tmp36.o \
@@ -105,9 +117,11 @@ util/kalman_filter/src/kalman.o
 
 C_DEPS +=  \
 hal/digital_output/src/digital_output.d \
-hal/digital_input/src/digital_input.d \
+hal/input/src/input.d \
+hal/io_descriptior/src/io_descriptor.d \
 hal/key/src/key.d \
 hal/led/src/led.d \
+hal/matrix_keypad/src/matrix_keypad.d \
 hal/pump/src/pump.d \
 hal/seg7/src/seg7.d \
 hal/tmp36/src/tmp36.d \
@@ -116,9 +130,11 @@ util/kalman_filter/src/kalman.d
 
 C_DEPS_AS_ARGS +=  \
 hal/digital_output/src/digital_output.d \
-hal/digital_input/src/digital_input.d \
+hal/input/src/input.d \
+hal/io_descriptior/src/io_descriptor.d \
 hal/key/src/key.d \
 hal/led/src/led.d \
+hal/matrix_keypad/src/matrix_keypad.d \
 hal/pump/src/pump.d \
 hal/seg7/src/seg7.d \
 hal/tmp36/src/tmp36.d \
@@ -146,7 +162,14 @@ hal/digital_output/src/digital_output.o: ../hal/digital_output/src/digital_outpu
 	@echo Finished building: $<
 	
 
-hal/digital_input/src/digital_input.o: ../hal/digital_input/src/digital_input.c
+hal/input/src/input.o: ../hal/input/src/input.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG -DF_CPU=16000000UL  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega2560" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+hal/io_descriptior/src/io_descriptor.o: ../hal/io_descriptior/src/io_descriptor.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG -DF_CPU=16000000UL  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega2560" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
@@ -161,6 +184,13 @@ hal/key/src/key.o: ../hal/key/src/key.c
 	
 
 hal/led/src/led.o: ../hal/led/src/led.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG -DF_CPU=16000000UL  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega2560" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+hal/matrix_keypad/src/matrix_keypad.o: ../hal/matrix_keypad/src/matrix_keypad.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG -DF_CPU=16000000UL  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega2560" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

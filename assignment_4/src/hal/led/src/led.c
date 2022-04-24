@@ -16,7 +16,7 @@ void led_init(io_definition_t io[])
 {	
 	for (uint8_t i = 0; i < L_NO; i++)
 	{
-		leds[i] = output_init(io[i].port, io[i].pin, L_ACTIVE_STATE, 1, L_DEFAULT_STATE);
+		leds[i] = output_init(io[i].port, io[i].pin, L_ACTIVE_STATE, L_DEFAULT_STATE);
 	}
 }
 

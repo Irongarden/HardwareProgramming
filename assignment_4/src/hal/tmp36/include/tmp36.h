@@ -10,8 +10,18 @@
 #ifndef tmp36_H_
 #define tmp36_H_
 
-#include <avr/io.h>
 #include <stdint.h>
+#include "../../../include/definitions.h"
+
+#define V_IN_PORT						TMP36_V_IN_PORT
+#define V_IN_PIN						TMP36_V_IN_PIN
+#define V_IN_ACTIVE_STATE				TMP36_V_IN_ACTIVE_STATE
+#define V_IN_PULL_UP					TMP36_V_IN_PULL_UP
+
+#define ENABLE_PORT						TMP36_ENABLE_PORT
+#define ENABLE_PIN						TMP36_ENABLE_PIN
+#define ENABLE_ACTIVE_STATE				TMP36_ENABLE_ACTIVE_STATE
+#define ENABLE_DEFAULT_STATE			TMP36_ENABLE_DEFAULT_STATE
 
 void tmp36_init(void (*callback)(uint8_t deg_c));
 

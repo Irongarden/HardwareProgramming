@@ -157,13 +157,16 @@
     <Compile Include="hal\digital_output\src\digital_output.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="hal\digital_input\include\digital_input.h">
+    <Compile Include="hal\input\include\input.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="hal\digital_input\src\digital_input.c">
+    <Compile Include="hal\input\src\input.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="hal\hal_definitions.h">
+    <Compile Include="hal\io_descriptior\include\io_descriptor.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hal\io_descriptior\src\io_descriptor.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="hal\key\include\key.h">
@@ -178,10 +181,10 @@
     <Compile Include="hal\led\src\led.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="hal\matrix_keyboard\include\matrix_keyboard.h">
+    <Compile Include="hal\matrix_keypad\include\matrix_keypad.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="hal\matrix_keyboard\src\matrix_keyboard.c">
+    <Compile Include="hal\matrix_keypad\src\matrix_keypad.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="hal\pump\include\pump.h">
@@ -217,21 +220,24 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="hal" />
-    <Folder Include="hal\digital_input" />
-    <Folder Include="hal\digital_input\include" />
-    <Folder Include="hal\digital_input\src" />
+    <Folder Include="hal\input" />
+    <Folder Include="hal\input\include" />
+    <Folder Include="hal\input\src" />
     <Folder Include="hal\digital_output" />
     <Folder Include="hal\digital_output\include" />
     <Folder Include="hal\digital_output\src" />
+    <Folder Include="hal\io_descriptior\include" />
+    <Folder Include="hal\io_descriptior\src" />
     <Folder Include="hal\key" />
     <Folder Include="hal\key\include" />
     <Folder Include="hal\key\src" />
     <Folder Include="hal\led\" />
     <Folder Include="hal\led\include\" />
     <Folder Include="hal\led\src\" />
-    <Folder Include="hal\matrix_keyboard" />
-    <Folder Include="hal\matrix_keyboard\include" />
-    <Folder Include="hal\matrix_keyboard\src" />
+    <Folder Include="hal\matrix_keypad" />
+    <Folder Include="hal\matrix_keypad\include" />
+    <Folder Include="hal\matrix_keypad\src" />
+    <Folder Include="hal\io_descriptior" />
     <Folder Include="hal\pump" />
     <Folder Include="hal\pump\include" />
     <Folder Include="hal\pump\src" />

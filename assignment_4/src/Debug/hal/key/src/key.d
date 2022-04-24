@@ -2,8 +2,8 @@ hal/key/src/key.d hal/key/src/key.o: ../hal/key/src/key.c \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdlib.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h \
  ../hal/key/src/../include/key.h \
- ../hal/key/src/../include/../../digital_input/include/digital_input.h \
- ../hal/key/src/../include/../../digital_input/include/../../hal_definitions.h \
+ ../hal/key/src/../include/../../input/include/input.h \
+ ../hal/key/src/../include/../../input/include/../../io_descriptior/include/io_descriptor.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdint.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdint.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h \
@@ -16,8 +16,8 @@ hal/key/src/key.d hal/key/src/key.o: ../hal/key/src/key.c \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\fuse.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h \
  ../hal/key/src/../include/../../../include/definitions.h \
- ../hal/key/src/../include/../../../include/../hal/hal_definitions.h \
- ../hal/key/src/../include/../../hal_definitions.h
+ ../hal/key/src/../include/../../../include/../hal/io_descriptior/include/io_descriptor.h \
+ ../hal/key/src/../include/../../io_descriptior/include/io_descriptor.h
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdlib.h:
 
@@ -25,9 +25,9 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\
 
 ../hal/key/src/../include/key.h:
 
-../hal/key/src/../include/../../digital_input/include/digital_input.h:
+../hal/key/src/../include/../../input/include/input.h:
 
-../hal/key/src/../include/../../digital_input/include/../../hal_definitions.h:
+../hal/key/src/../include/../../input/include/../../io_descriptior/include/io_descriptor.h:
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdint.h:
 
@@ -53,6 +53,6 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 
 ../hal/key/src/../include/../../../include/definitions.h:
 
-../hal/key/src/../include/../../../include/../hal/hal_definitions.h:
+../hal/key/src/../include/../../../include/../hal/io_descriptior/include/io_descriptor.h:
 
-../hal/key/src/../include/../../hal_definitions.h:
+../hal/key/src/../include/../../io_descriptior/include/io_descriptor.h:

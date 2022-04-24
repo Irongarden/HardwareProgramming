@@ -5,13 +5,12 @@
  *  Author: Jacob
  */ 
 
-
 #ifndef KEY_H_
 #define KEY_H_
 
-#include "../../digital_input/include/digital_input.h"
+#include "../../input/include/input.h"
 #include "../../../include/definitions.h"
-#include "../../hal_definitions.h"
+#include "../../io_descriptior/include/io_descriptor.h"
 
 #define K_NO			NO_INPUT_KEYS
 #define K_PULL_UP_STATE	KEY_PULL_UP

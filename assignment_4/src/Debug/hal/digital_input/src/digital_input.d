@@ -16,7 +16,7 @@ hal/digital_input/src/digital_input.d \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h \
  ../hal/digital_input/src/../include/digital_input.h \
- ../hal/digital_input/src/../include/../../hal_definitions.h
+ ../hal/digital_input/src/../include/../../io_descriptior/include/io_descriptor.h
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdlib.h:
 
@@ -48,4 +48,4 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 
 ../hal/digital_input/src/../include/digital_input.h:
 
-../hal/digital_input/src/../include/../../hal_definitions.h:
+../hal/digital_input/src/../include/../../io_descriptior/include/io_descriptor.h:

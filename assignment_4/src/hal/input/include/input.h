@@ -1,27 +1,14 @@
 /*
- * digital_input.h
+ * input.h
  *
  * Created: 23/04/2022 11.06.16
  *  Author: Jacob
  */ 
 
-#include "../../hal_definitions.h"
+#include "../../io_descriptior/include/io_descriptor.h"
 
-#ifndef DIGITAL_INPUT_H_
-#define DIGITAL_INPUT_H_
-
-typedef enum 
-{
-	FALLING_EDGE = 0,
-	RISING_EDGE,
-	ANY_EDGE
-} trigger_t;
-
-typedef enum 
-{
-	FLOATING = 0,
-	PULL_UP
-} pull_up_t;
+#ifndef INPUT_H_
+#define INPUT_H_
 
 /**
 * Specifies the edge when the interrupt and callback is triggered.
@@ -41,8 +28,8 @@ io_descriptor_t input_init(port_t port, uint8_t bit, active_state_t active, pull
 /**
 * Returns 0 if the input is inactive and 1 if active. 
 **/
-uint8_t input_activated(io_descriptor_t self);
+uint8_t input_activated(io_descriptor_t input);
 
-return_code_t input_destroy(io_descriptor_t self);
+return_code_t input_destroy(io_descriptor_t input);
 
-#endif /* DIGITAL_INPUT_H_ */
+#endif /* INPUT_H_ */

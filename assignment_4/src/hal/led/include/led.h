@@ -11,7 +11,7 @@
 
 #include <stdint.h>
 #include "../../../include/definitions.h"
-#include "../../hal_definitions.h"
+#include "../../io_descriptior/include/io_descriptor.h"
 
 #define L_NO			NO_OUTPUT_LEDS
 #define L_ACTIVE_STATE	LED_ACTIVE_STATE
