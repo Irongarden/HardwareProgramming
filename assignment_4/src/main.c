@@ -14,7 +14,6 @@
 #include <avr/interrupt.h>
 
 #include "include/definitions.h"
-#include "hal/io_descriptior/include/io_descriptor.h"
 #include "hal/key/include/key.h"
 #include "hal/pump/include/pump.h"
 #include "hal/tmp36/include/tmp36.h"

@@ -11,7 +11,6 @@
 
 #include <stdint.h>
 #include "../../../include/definitions.h"
-#include "../../io_descriptior/include/io_descriptor.h"
 
 #define PAD_R1_PORT				KEYPAD_R1_PORT
 #define PAD_R1_PIN				KEYPAD_R1_PIN

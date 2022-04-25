@@ -19,15 +19,15 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
   7 .debug_abbrev 00001a45  00000000  00000000  000051fb  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00001c8c  00000000  00000000  00006c40  2**0
+  8 .debug_line   00001c69  00000000  00000000  00006c40  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  00000864  00000000  00000000  000088cc  2**2
+  9 .debug_frame  00000864  00000000  00000000  000088ac  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00000c0d  00000000  00000000  00009130  2**0
+ 10 .debug_str    00000c0d  00000000  00000000  00009110  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    000018b2  00000000  00000000  00009d3d  2**0
+ 11 .debug_loc    000018b2  00000000  00000000  00009d1d  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 000002b8  00000000  00000000  0000b5ef  2**0
+ 12 .debug_ranges 000002b8  00000000  00000000  0000b5cf  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -1221,7 +1221,7 @@ uint8_t io_bit(io_descriptor_t self)
      68c:	08 95       	ret
 
 0000068e <key_init>:
-#include "../include/key.h"
+#include "../../input/include/input.h"
 
 static io_descriptor_t keys[K_NO];
 
@@ -4181,8 +4181,8 @@ uint8_t kalman_filter(uint8_t measurement)
     1830:	30 91 03 02 	lds	r19, 0x0203	; 0x800203 <__malloc_heap_start+0x1>
     1834:	30 93 a6 02 	sts	0x02A6, r19	; 0x8002a6 <__brkval+0x1>
     1838:	20 93 a5 02 	sts	0x02A5, r18	; 0x8002a5 <__brkval>
-    183c:	20 91 00 02 	lds	r18, 0x0200	; 0x800200 <__data_start>
-    1840:	30 91 01 02 	lds	r19, 0x0201	; 0x800201 <__data_start+0x1>
+    183c:	20 91 00 02 	lds	r18, 0x0200	; 0x800200 <__DATA_REGION_ORIGIN__>
+    1840:	30 91 01 02 	lds	r19, 0x0201	; 0x800201 <__DATA_REGION_ORIGIN__+0x1>
     1844:	21 15       	cp	r18, r1
     1846:	31 05       	cpc	r19, r1
     1848:	41 f4       	brne	.+16     	; 0x185a <malloc+0xea>

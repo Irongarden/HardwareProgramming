@@ -6,6 +6,7 @@
  */ 
 
 #include "../include/pump.h"
+#include "../../digital_output/include/digital_output.h"
 
 static io_descriptor_t pump;
 

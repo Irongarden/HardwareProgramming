@@ -15,7 +15,6 @@ hal/matrix_keypad/src/matrix_keypad.d \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\fuse.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h \
  ../hal/matrix_keypad/src/../include/../../../include/../hal/io_descriptior/include/io_descriptor.h \
- ../hal/matrix_keypad/src/../include/../../io_descriptior/include/io_descriptor.h \
  ../hal/matrix_keypad/src/../../input/include/input.h \
  ../hal/matrix_keypad/src/../../input/include/../../io_descriptior/include/io_descriptor.h \
  ../hal/matrix_keypad/src/../../digital_output/include/digital_output.h \
@@ -48,8 +47,6 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h:
 
 ../hal/matrix_keypad/src/../include/../../../include/../hal/io_descriptior/include/io_descriptor.h:
-
-../hal/matrix_keypad/src/../include/../../io_descriptior/include/io_descriptor.h:
 
 ../hal/matrix_keypad/src/../../input/include/input.h:
 

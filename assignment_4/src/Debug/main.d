@@ -20,19 +20,13 @@ main.d main.o: .././main.c \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h \
  .././include/definitions.h \
  .././include/../hal/io_descriptior/include/io_descriptor.h \
- .././hal/io_descriptior/include/io_descriptor.h \
  .././hal/key/include/key.h \
- .././hal/key/include/../../input/include/input.h \
- .././hal/key/include/../../input/include/../../io_descriptior/include/io_descriptor.h \
  .././hal/key/include/../../../include/definitions.h \
  .././hal/key/include/../../../include/../hal/io_descriptior/include/io_descriptor.h \
  .././hal/key/include/../../io_descriptior/include/io_descriptor.h \
  .././hal/pump/include/pump.h \
- .././hal/pump/include/../../digital_output/include/digital_output.h \
- .././hal/pump/include/../../digital_output/include/../../io_descriptior/include/io_descriptor.h \
  .././hal/pump/include/../../../include/definitions.h \
  .././hal/pump/include/../../../include/../hal/io_descriptior/include/io_descriptor.h \
- .././hal/pump/include/../../io_descriptior/include/io_descriptor.h \
  .././hal/tmp36/include/tmp36.h \
  .././hal/tmp36/include/../../../include/definitions.h \
  .././hal/tmp36/include/../../../include/../hal/io_descriptior/include/io_descriptor.h \
@@ -45,8 +39,7 @@ main.d main.o: .././main.c \
  .././hal/led/include/../../io_descriptior/include/io_descriptor.h \
  .././hal/matrix_keypad/include/matrix_keypad.h \
  .././hal/matrix_keypad/include/../../../include/definitions.h \
- .././hal/matrix_keypad/include/../../../include/../hal/io_descriptior/include/io_descriptor.h \
- .././hal/matrix_keypad/include/../../io_descriptior/include/io_descriptor.h
+ .././hal/matrix_keypad/include/../../../include/../hal/io_descriptior/include/io_descriptor.h
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdlib.h:
 
@@ -90,13 +83,7 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 
 .././include/../hal/io_descriptior/include/io_descriptor.h:
 
-.././hal/io_descriptior/include/io_descriptor.h:
-
 .././hal/key/include/key.h:
-
-.././hal/key/include/../../input/include/input.h:
-
-.././hal/key/include/../../input/include/../../io_descriptior/include/io_descriptor.h:
 
 .././hal/key/include/../../../include/definitions.h:
 
@@ -106,15 +93,9 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 
 .././hal/pump/include/pump.h:
 
-.././hal/pump/include/../../digital_output/include/digital_output.h:
-
-.././hal/pump/include/../../digital_output/include/../../io_descriptior/include/io_descriptor.h:
-
 .././hal/pump/include/../../../include/definitions.h:
 
 .././hal/pump/include/../../../include/../hal/io_descriptior/include/io_descriptor.h:
-
-.././hal/pump/include/../../io_descriptior/include/io_descriptor.h:
 
 .././hal/tmp36/include/tmp36.h:
 
@@ -143,5 +124,3 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 .././hal/matrix_keypad/include/../../../include/definitions.h:
 
 .././hal/matrix_keypad/include/../../../include/../hal/io_descriptior/include/io_descriptor.h:
-
-.././hal/matrix_keypad/include/../../io_descriptior/include/io_descriptor.h:

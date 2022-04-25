@@ -11,9 +11,7 @@
 #ifndef PUMP_H_
 #define PUMP_H_
 
-#include "../../digital_output/include/digital_output.h"
 #include "../../../include/definitions.h"
-#include "../../io_descriptior/include/io_descriptor.h"
 
 #define P_PORT			PUMP_PORT
 #define P_PIN				PUMP_PIN

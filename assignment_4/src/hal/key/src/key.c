@@ -7,6 +7,7 @@
 
 #include <stdlib.h>
 #include "../include/key.h"
+#include "../../input/include/input.h"
 
 static io_descriptor_t keys[K_NO];
 

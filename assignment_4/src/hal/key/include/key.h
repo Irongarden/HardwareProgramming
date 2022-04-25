@@ -8,13 +8,12 @@
 #ifndef KEY_H_
 #define KEY_H_
 
-#include "../../input/include/input.h"
 #include "../../../include/definitions.h"
 #include "../../io_descriptior/include/io_descriptor.h"
 
-#define K_NO			NO_INPUT_KEYS
-#define K_PULL_UP_STATE	KEY_PULL_UP
-#define K_ACTIVE_STATE	KEY_ACTIVE_STATE
+#define K_NO				NO_INPUT_KEYS
+#define K_PULL_UP_STATE		KEY_PULL_UP
+#define K_ACTIVE_STATE		KEY_ACTIVE_STATE
 
 /**
 * Initializes keys without callback. 
