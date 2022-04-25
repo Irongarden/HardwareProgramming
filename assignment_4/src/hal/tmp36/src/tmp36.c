@@ -48,17 +48,6 @@ void tmp36_init(void (*callback)(uint8_t deg_c))
 	// Set pre-scaler 64
 	ADCSRA |= _BV(ADPS1) | _BV(ADPS2);
 
-	// Enable ADC  
-	ADCSRA |= _BV(ADEN);
-	
-	// ****** Interrupt and auto trigger ****
-	
-	// Enable interrupt.
-	ADCSRA |= _BV(ADIE);
-	
-	// Enable Auto Trigger
-	ADCSRA |= _BV(ADATE);
-	
 	// Set auto trigger source timer1 Compare Match Channel B
 	ADCSRB |= _BV(ADTS2) | _BV(ADTS0);
 	
@@ -81,14 +70,23 @@ void tmp36_init(void (*callback)(uint8_t deg_c))
 	// set timer frequency 1 Hz. (16000000 / (2 * 1 * 256)) - 1 = 31249
 	OCR1B = 31249;
 	
-	// ***** Timer config end *********
-	
 	// Set callback.
 	if (0 != callback)
+	{
 		cb = callback;
+	}
+		
+	// Enable interrupt.
+	ADCSRA |= _BV(ADIE);
+	
+	// Enable Auto Trigger
+	ADCSRA |= _BV(ADATE);
 	
 	// Enable TMP36
 	output_set_state(enable, ACTIVE);
+	
+	// Enable ADC
+	ADCSRA |= _BV(ADEN);
 	
 	// Start Conversion.
 	ADCSRA |= _BV(ADSC);
