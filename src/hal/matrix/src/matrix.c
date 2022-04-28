@@ -13,6 +13,12 @@ typedef struct key_descr_t{
 	uint8_t bit;
 	key_descr_t;
 	};
+	
+static key_descr_t key[] = {
+	{}
+		
+	
+};
 
 void init_matrix_keyboard(){
 	
