@@ -40,6 +40,7 @@ SUBDIRS :=  \
 ../hal/led/include/ \
 ../hal/led/src/ \
 ../hal/7segment \
+../hal/NewFolder1/ \
 ../hal/tmp36 \
 ../hal/tmp36/include \
 ../hal/tmp36/src

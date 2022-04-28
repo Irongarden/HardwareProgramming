@@ -169,6 +169,7 @@
     <Folder Include="hal\led\include\" />
     <Folder Include="hal\led\src\" />
     <Folder Include="hal\7segment" />
+    <Folder Include="hal\NewFolder1\" />
     <Folder Include="hal\tmp36" />
     <Folder Include="hal\tmp36\include" />
     <Folder Include="hal\tmp36\src" />
