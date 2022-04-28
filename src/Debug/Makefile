@@ -40,7 +40,9 @@ SUBDIRS :=  \
 ../hal/led/include/ \
 ../hal/led/src/ \
 ../hal/7segment \
-../hal/NewFolder1/ \
+../hal/matrix16 \
+../hal/matrix16/include \
+../hal/matrix16/src \
 ../hal/tmp36 \
 ../hal/tmp36/include \
 ../hal/tmp36/src
@@ -50,6 +52,7 @@ SUBDIRS :=  \
 C_SRCS +=  \
 ../hal/7segment/src/seg7.c \
 ../hal/led/src/led.c \
+../hal/matrix16/src/matrix.c \
 ../hal/tmp36/src/tmp36.c \
 ../main.c
 
@@ -63,24 +66,28 @@ ASM_SRCS +=
 OBJS +=  \
 hal/7segment/src/seg7.o \
 hal/led/src/led.o \
+hal/matrix16/src/matrix.o \
 hal/tmp36/src/tmp36.o \
 main.o
 
 OBJS_AS_ARGS +=  \
 hal/7segment/src/seg7.o \
 hal/led/src/led.o \
+hal/matrix16/src/matrix.o \
 hal/tmp36/src/tmp36.o \
 main.o
 
 C_DEPS +=  \
 hal/7segment/src/seg7.d \
 hal/led/src/led.d \
+hal/matrix16/src/matrix.d \
 hal/tmp36/src/tmp36.d \
 main.d
 
 C_DEPS_AS_ARGS +=  \
 hal/7segment/src/seg7.d \
 hal/led/src/led.d \
+hal/matrix16/src/matrix.d \
 hal/tmp36/src/tmp36.d \
 main.d
 
@@ -106,6 +113,13 @@ hal/7segment/src/seg7.o: ../hal/7segment/src/seg7.c
 	
 
 hal/led/src/led.o: ../hal/led/src/led.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG -DF_CPU=16000000UL  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega2560" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+hal/matrix16/src/matrix.o: ../hal/matrix16/src/matrix.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG -DF_CPU=16000000UL  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega2560" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
