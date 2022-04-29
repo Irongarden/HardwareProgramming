@@ -20,13 +20,50 @@
 #define offset 17
 static uint8_t temp = 0;
 static uint8_t key = 3; // Current temp default key press
-uint8_t keypress = 0; // Default pressed key
-uint16_t array_to_int(uint8_t arr[]);
-uint8_t array[4] = {0,0,0,0}; // Array for entered keys
+static uint8_t keypress = 0; // Default pressed key
+static uint16_t array_to_int(uint8_t arr[]);
+static uint8_t array[4] = {0,0,0,0}; // Array for entered keys
+	static int8_t tlow = 19; // Default low temp
+	int8_t thigh = 25; //Default high temp
+	int8_t tlowNew = 0; // New Temp low value
+	int8_t thighNew = 0; // New Temp high value
 
 static void new_measurement(uint8_t deg_c)
 {
 	temp = deg_c;
+}
+
+uint16_t array_to_int(uint8_t array[])
+{
+	uint16_t k = 0;
+	for (uint8_t i = 0; i < 4; i++)
+	{
+		k = 10 * k + array[i];
+	}
+
+	return k;
+}
+
+int8_t newT(int8_t new, int8_t old, uint8_t k){
+	if(k==14){ // If save pressed
+		new = old;
+		new = 0;
+		array[3] = 0;
+		array[2] = 0;
+		}else if(k==13){ // if Cancel pressed
+		new = 0;
+		array[3] = 0;
+		array[2] = 0;
+		}else if(k<10){ // check if value is inside spectra
+		array[2]=array[3];
+		array[3]=k;
+		new = array_to_int(array);
+		return new;
+		
+		//thighNew += k;
+	}
+	return 127;
+	
 }
 
 
@@ -41,16 +78,18 @@ int main(void)
 	
 	// Enable interrupt globally.
 	sei();
-	int8_t tlow = 20; // Default low temp
-	int8_t thigh = 25; //Default high temp
-	int8_t tlowNew = 0; // New Temp low value
-	int8_t thighNew = 0; // New Temp high value
+	
 	
 	
 	_delay_ms(500);
 	printint_4u(0);
     while (1) 
     {
+		if(temp>thigh){
+			lightbar(1);
+		}else if(temp<tlow){
+			lightbar(0);
+		}
 		
 		keypress = scan_key();
 		
@@ -85,33 +124,79 @@ int main(void)
 			
 			if(k!=127) // if keys are pressed
 			{
-				if(k==14){ // If save pressed
-					thigh = thighNew;
-					thighNew = 0;
-					array[3] = 0;
-					array[2] = 0;
-				}else if(k==13){ // if Cancel pressed
-					thighNew = 0;
-					array[3] = 0;
-					array[2] = 0;
-				}else if(thighNew<=99){ // check if value is inside spectra
-					if(array[3]!=0){
-						array[2]=array[3];
-						array[3]=0;
-						}else{
-						array[3] = k;
-					}
-					thighNew = array_to_int(array);
-					
-					//thighNew += k;
+				
+				uint8_t n = newT(thighNew,thigh,k);
+				if(n!=127){
+					thighNew =n;
 				}
 				
+				
+				//if(k==14){ // If save pressed
+					//thigh = thighNew;
+					//thighNew = 0;
+					//array[3] = 0;
+					//array[2] = 0;
+				//}else if(k==13){ // if Cancel pressed
+					//thighNew = 0;
+					//array[3] = 0;
+					//array[2] = 0;
+				//}else if(thighNew<=99){ // check if value is inside spectra
+					//if(array[3]!=0){
+						//array[2]=array[3];
+						//array[3]=0;
+						//}else{
+						//array[3] = k;
+					//}
+					//thighNew = array_to_int(array);
+					//
+					////thighNew += k;
+				//}
+				//
 				
 				}
 			break;
 			
 			case 1:							// Low temp
-			printint_4u(tlow);
+			if(tlowNew!=0){
+				printint_4u(tlowNew);
+				}else{
+				printint_4u(tlow);
+			}
+			uint8_t s = getxkey();
+			_delay_ms(200);
+			
+			
+			if(s!=127) // if keys are pressed
+			{
+				uint8_t x = newT(tlowNew,tlow,s);
+				if(x!=127){
+					tlowNew =x;
+				}
+				 
+				
+				//if(s==14){ // If save pressed
+					//tlow = tlowNew;
+					//tlowNew = 0;
+					//array[3] = 0;
+					//array[2] = 0;
+					//}else if(s==13){ // if Cancel pressed
+					//tlowNew = 0;
+					//array[3] = 0;
+					//array[2] = 0;
+					//}else if(tlowNew<=99){ // check if value is inside spectra
+					//if(array[3]!=0){
+						//array[2]=array[3];
+						//array[3]=0;
+						//}else{
+						//array[3] = s;
+					//}
+					//tlowNew = array_to_int(array);
+					//
+					////thighNew += k;
+				//}
+				//
+				
+			}
 			break;
 		}
 		
@@ -143,18 +228,5 @@ int main(void)
 	//return 0;
 }
 
-uint16_t array_to_int(uint8_t array[])
-{
-	uint16_t k = 0;
-	for (uint8_t i = 0; i < 4; i++)
-	{
-		k = 10 * k + array[i];
-	}
 
-	return k;
-}
-
-void newT(int8_t new, int8_t old, uint8_t k){
-	
-}
 
