@@ -2,7 +2,8 @@
  * tmp36.c
  *
  * Created: 13/03/2022 14.53.26
- *  
+ * Authors:	Mathias Hansen - 274392
+ *			Jacob Norsted - 273962
  */ 
 #include "../include/tmp36.h"
 #include <avr/interrupt.h>
@@ -46,18 +47,11 @@ void tmp36_init(void (*callback)(uint8_t deg_c))
 	// Set pre-scaler 64
 	ADCSRA |= _BV(ADPS1) | _BV(ADPS2);
 
-	// Enable ADC  
-	ADCSRA |= _BV(ADEN);
 	
 	// ****** General config end *************
 	
 	// ****** Interrupt and auto trigger ****
 	
-	// Enable interrupt.
-	ADCSRA |= _BV(ADIE);
-	
-	// Enable Auto Trigger
-	ADCSRA |= _BV(ADATE);
 	
 	// Set auto trigger source timer1 Compare Match Channel B
 	ADCSRB |= _BV(ADTS2) | _BV(ADTS0);
@@ -66,17 +60,15 @@ void tmp36_init(void (*callback)(uint8_t deg_c))
 	
 	// ***** Configure Timer 1 Channel B. ******
 	
-	// Set to Clear timer on Compare Match mode (CTC).
-	TCCR1A |= _BV(WGM12);
-	
 	// Set timer to toggle on compare match.
 	TCCR1A |= _BV(COM1B0);
 	
 	// Set Clock frequency to 16MHz/256 = 62500kHz
 	TCCR1B |=  _BV(CS12);  //256 prescaler
 	
-	// Enable Timer Interrupt
-	TIMSK1 |= _BV(OCIE1B);
+	// Set to Clear timer on Compare Match mode (CTC).
+	TCCR1B |= _BV(WGM12);
+	
 
 	// set timer frequency 1 Hz. (16000000 / (2 * 1 * 256)) - 1 = 31249
 	OCR1B = 31249;
@@ -86,9 +78,24 @@ void tmp36_init(void (*callback)(uint8_t deg_c))
 	// Set callback.
 	if (0 != callback)
 		cb = callback;
+		
+	// Enable Timer Interrupt
+	TIMSK1 |= _BV(OCIE1B);
+	
+	// Enable interrupt.
+	ADCSRA |= _BV(ADIE);
+	
+	// Enable Auto Trigger
+	ADCSRA |= _BV(ADATE);
 	
 	// Enable TMP36
 	PORTG |= _BV(enable);
+	
+	
+	
+	// Enable ADC
+	ADCSRA |= _BV(ADEN);
+	
 	
 	// Start Conversion.
 	ADCSRA |= _BV(ADSC);
@@ -99,7 +106,9 @@ ISR(ADC_vect)
 {
 	// ADC (16bits) = ADCH and ADCL - Default right adjusted ADC value = 0-1023.
 	if (0 != cb)
+	
 		cb(mv_to_c(adc_to_mv(ADC)));
+		
 	
 	// ADC interrupt flag is high!
 	// Clear ADC interrupt flag.

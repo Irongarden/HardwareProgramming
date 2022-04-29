@@ -145,6 +145,12 @@
     <Compile Include="hal\7segment\src\seg7.c">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="hal\key\include\key.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hal\key\src\key.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="hal\led\include\led.h">
       <SubType>compile</SubType>
     </Compile>
@@ -171,6 +177,8 @@
     <Folder Include="hal" />
     <Folder Include="hal\7segment\include" />
     <Folder Include="hal\7segment\src" />
+    <Folder Include="hal\key\include" />
+    <Folder Include="hal\key\src" />
     <Folder Include="hal\led\" />
     <Folder Include="hal\led\include\" />
     <Folder Include="hal\led\src\" />
@@ -178,6 +186,7 @@
     <Folder Include="hal\matrix16" />
     <Folder Include="hal\matrix16\include" />
     <Folder Include="hal\matrix16\src" />
+    <Folder Include="hal\key" />
     <Folder Include="hal\tmp36" />
     <Folder Include="hal\tmp36\include" />
     <Folder Include="hal\tmp36\src" />

@@ -4,6 +4,8 @@
 
 hal\7segment\src\seg7.c
 
+hal\key\src\key.c
+
 hal\led\src\led.c
 
 hal\matrix16\src\matrix.c
