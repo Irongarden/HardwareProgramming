@@ -12,45 +12,52 @@
 #include <stdint.h>
 #include "../../../include/definitions.h"
 
+// Display communication types.
 typedef enum {
 	SERIAL = 0,
 	SPI
 } communication_t;
 
 // No of segments in display.
+// Type: uint8_t
 #define D_NO_SEGMENTS				4
 
 // Communication Mode
-#define D_COMM						SPI  // must be of type communication_t.
+// Type: communication_t
+#define D_COMM						SPI
 
+// Display n port configuration.
+// type: port_t
 #define D_7_D1_PORT					SEG_7_D1_PORT
-#define D_7_D1_PIN					SEG_7_D1_PIN
-
 #define D_7_D2_PORT					SEG_7_D2_PORT
-#define D_7_D2_PIN					SEG_7_D2_PIN
-
 #define D_7_D3_PORT					SEG_7_D3_PORT
-#define D_7_D3_PIN					SEG_7_D3_PIN
-
 #define D_7_D4_PORT					SEG_7_D4_PORT
-#define D_7_D4_PIN					SEG_7_D4_PIN
-
-#define D_7_DN_ACTIVE_STATE			SEG_7_DN_ACTIVE_STATE
-#define D_7_DN_DEFAULT_STATE		SEG_7_DN_DEFAULT_STATE
-
 #define D_7_RCK_PORT				SEG_7_RCK_PORT
-#define D_7_RCK_PIN					SEG_7_RCK_PIN
-#define D_7_RCK_ACTIVE_STATE		SEG_7_RCK_ACTIVE_STATE
-#define D_7_RCK_DEFAULT_STATE		SEG_7_RCK_DEFAULT_STATE
-
 #define D_7_SCK_PORT				SEG_7_SCK_PORT
-#define D_7_SCK_PIN					SEG_7_SCK_PIN
-#define D_7_SCK_ACTIVE_STATE		SEG_7_SCK_ACTIVE_STATE
-#define D_7_SCK_DEFAULT_STATE		SEG_7_SCK_DEFAULT_STATE
-
 #define D_7_SI_PORT					SEG_7_SI_PORT
+
+// Display n pin configuration.
+// type: uint8_t
+#define D_7_D1_PIN					SEG_7_D1_PIN
+#define D_7_D2_PIN					SEG_7_D2_PIN
+#define D_7_D3_PIN					SEG_7_D3_PIN
+#define D_7_D4_PIN					SEG_7_D4_PIN
+#define D_7_RCK_PIN					SEG_7_RCK_PIN
+#define D_7_SCK_PIN					SEG_7_SCK_PIN
 #define D_7_SI_PIN					SEG_7_SI_PIN
+
+// Display output active state configuration.
+// Type: active_state_t
+#define D_7_DN_ACTIVE_STATE			SEG_7_DN_ACTIVE_STATE
+#define D_7_RCK_ACTIVE_STATE		SEG_7_RCK_ACTIVE_STATE
+#define D_7_SCK_ACTIVE_STATE		SEG_7_SCK_ACTIVE_STATE
 #define D_7_SI_ACTIVE_STATE			SEG_7_SI_ACTIVE_STATE
+
+// Display output default initialization state.
+// Type: state_t
+#define D_7_DN_DEFAULT_STATE		SEG_7_DN_DEFAULT_STATE
+#define D_7_RCK_DEFAULT_STATE		SEG_7_RCK_DEFAULT_STATE
+#define D_7_SCK_DEFAULT_STATE		SEG_7_SCK_DEFAULT_STATE
 #define D_7_SI_DEFAULT_STATE		SEG_7_SI_DEFAULT_STATE
 
 void display_init();

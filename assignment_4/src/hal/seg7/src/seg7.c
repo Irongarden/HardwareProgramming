@@ -29,10 +29,10 @@ static uint8_t current_segment = 0;
 static uint8_t leading_zeros = 1;
 
 // Holds number split into digits.
-static uint8_t digits[] = {0, 0, 0, 0};
+static uint8_t digits[D_NO_SEGMENTS] = {0, 0, 0, 0};
 
 // Holds all separated digits as display code - default all elements of segment on.
-static uint8_t display[] = {0x0, 0x0, 0x0, 0x0};
+static uint8_t display[D_NO_SEGMENTS] = {0x0, 0x0, 0x0, 0x0};
 	
 // Outputs.
 static io_descriptor_t d_segments[D_NO_SEGMENTS];

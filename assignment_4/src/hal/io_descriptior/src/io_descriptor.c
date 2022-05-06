@@ -19,7 +19,7 @@ typedef struct io_desc {
 
 io_descriptor_t io_descriptor_init(port_t port, uint8_t bit, active_state_t active)
 {
-	// Reserving memory.
+	// Allocating memory.
 	io_descriptor_t desc = malloc(sizeof(io_desc_st));
 	
 	// Checking that memory is reserved.

@@ -40,12 +40,15 @@ typedef enum
 	OK
 } return_code_t;
 
+// Used to define a specific port.
+// Can be passed as array to led and key for initializing io.
 typedef struct  
 {
 	port_t port;
 	uint8_t pin;
 } io_definition_t;
 
+// Used to define when interrupts are triggered.
 typedef enum
 {
 	FALLING_EDGE = 0,

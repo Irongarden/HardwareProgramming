@@ -13,9 +13,20 @@
 
 #include "../../../include/definitions.h"
 
+// Pump output port.
+// type: port_t
 #define P_PORT			PUMP_PORT
-#define P_PIN				PUMP_PIN
+
+// Pump output pin.
+// type: uint8_t
+#define P_PIN			PUMP_PIN
+
+// Pump active state configuration.
+// Type: active_state_t
 #define P_ACTIVE_STATE	PUMP_ACTIVE_STATE
+
+// Pump default initialization state.
+// Type: state_t
 #define P_DEFAULT_STATE	PUMP_DEFAULT_STATE
 
 void pump_init();

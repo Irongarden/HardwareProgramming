@@ -10,6 +10,7 @@
 #include <avr/interrupt.h>
 #include "../include/input.h"
 
+// Callbacks for PD2 and PD3.
 static void (*cb2)() = 0;
 static void (*cb3)() = 0;
 

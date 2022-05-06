@@ -25,15 +25,22 @@
 // Offset 18 = led 1-8 @ 18-25 deg C.
 #define OFFSET 18
 
+// Keypad value redefines.
 #define SAVE KEYPAD_NO
 #define CANCEL KEYPAD_ASTRIX
 
+// Temperature variables.
 static uint8_t t_current = 0;
 static uint8_t t_filtered = 0;
 static uint16_t t_low = 22;
 static uint16_t t_high = 24;
+
+// Determines what is displayed. 1: t_low, 2: t_high, 3, t_filtered. 
 static uint8_t display_current = 3;
-static uint8_t display_selector = 0;
+
+// Holds values from key input.
+static uint8_t display_key = 0;
+// Holds values from keypad input.
 static int8_t keypad_current = KEYPAD_INACTIVE;
 
 // Temperature callback.
@@ -77,7 +84,7 @@ static uint16_t array_to_int(uint8_t arr[])
 	return k;
 }
 
-static void enable_input()
+static void take_input()
 {
 	uint16_t input_value = 0;
 	uint8_t inputs[] = {0, 0, 0, 0};
@@ -115,9 +122,10 @@ static void enable_input()
 		
 	} while (keypad_current != SAVE && keypad_current != CANCEL);
 	
-	// save new vaule.
+	// save new value.
 	if (keypad_current == SAVE)
 	{
+		// Show SAVE in display
 		display_save();
 		switch (display_current)
 		{
@@ -142,14 +150,15 @@ static void enable_input()
 static void run_solar_heating() {
 	t_filtered = kalman_filter(t_current);
 	
-	// check input keys for changeing display.
-	display_selector = key_scan();
+	// check input keys for changing display.
+	display_key = key_scan();
 	
-	if (display_selector)
-		display_current = display_selector;
+	if (display_key)
+		display_current = display_key;
 	
 	keypad_current = matrix_keypad_get_x();
 	
+	// check keypad for changing display.
 	switch (keypad_current) {
 		case KEYPAD_A:
 			display_current = 1;
@@ -169,13 +178,13 @@ static void run_solar_heating() {
 	{
 		case 1:
 			if (keypad_current >= KEYPAD_0 && keypad_current <= KEYPAD_9)
-				enable_input();
+				take_input();
 			else 
 				display_print_uint_4(t_low);
 			break;
 		case 2:
 			if (keypad_current >= KEYPAD_0 && keypad_current <= KEYPAD_9)
-				enable_input();
+				take_input();
 			else
 				display_print_uint_4(t_high);
 			break;
@@ -208,7 +217,7 @@ static void hal_init()
 
 static void util_init()
 {
-	// Initialize basic kalman filter
+	// Initialize basic Kalman filter
 	kalman_init(0.001, 5, 1, 0, 1);
 }
 

@@ -3,6 +3,9 @@
  *
  * Created: 23/04/2022 10.16.26
  *  Author: Jacob
+ *
+ *
+ * Defines application settings.
  */ 
 
 #include <avr/io.h>
@@ -114,6 +117,7 @@
 
 #define KEYPAD_R1_PORT				PB
 #define KEYPAD_R1_PIN				PB7
+
 /************************************************************************/
 /* PORT C                                                               */
 /************************************************************************/

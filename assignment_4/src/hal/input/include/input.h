@@ -12,7 +12,7 @@
 
 /**
 * Specifies the edge when the interrupt and callback is triggered.
-* Must be trigger_t.
+* Type: trigger_t.
 **/
 #define cb_trigger FALLING_EDGE
 

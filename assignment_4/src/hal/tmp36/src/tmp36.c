@@ -13,10 +13,11 @@
 #include "../../digital_output/include/digital_output.h"
 #include "../../input/include/input.h"
 
-
+// Callback
 static void (*cb)(uint8_t deg_c) = 0;
 
-static io_descriptor_t v_out;
+// IO
+static io_descriptor_t v_in;
 static io_descriptor_t enable;
 
 // Not static for testing purposes.
@@ -36,7 +37,13 @@ void tmp36_init(void (*callback)(uint8_t deg_c))
 {
 	// configure io.
 	enable = output_init(ENABLE_PORT, ENABLE_PIN, ENABLE_ACTIVE_STATE, ENABLE_DEFAULT_STATE);
-	v_out = input_init(V_IN_PORT, V_IN_PIN, V_IN_ACTIVE_STATE, V_IN_PULL_UP, NULL);
+	v_in = input_init(V_IN_PORT, V_IN_PIN, V_IN_ACTIVE_STATE, V_IN_PULL_UP, NULL);
+	
+	// Set callback.
+	if (0 != callback)
+	{
+		cb = callback;
+	}
 	
 	// AVCC reference (5V).
 	ADMUX |= _BV(REFS0);
@@ -45,61 +52,45 @@ void tmp36_init(void (*callback)(uint8_t deg_c))
 	ADMUX |= _BV(MUX2) | _BV(MUX1) | _BV(MUX0);
 	ADCSRB |= _BV(MUX5);
 	
-	// Set pre-scaler 64
-	ADCSRA |= _BV(ADPS1) | _BV(ADPS2);
-
+	// Set pre-scaler 128
+	ADCSRA |= _BV(ADPS0) | _BV(ADPS1) | _BV(ADPS2);
+	
 	// Set auto trigger source timer1 Compare Match Channel B
 	ADCSRB |= _BV(ADTS2) | _BV(ADTS0);
 	
-	// ****** Interrupt and auto trigger end ****
-	
-	// ***** Configure Timer 1 Channel B. ******
-	
-	// Set timer to toggle on compare match.
-	TCCR1A |= _BV(COM1B0);
-	
-	// Set Clock frequency to 16MHz/256 = 62500kHz
-	TCCR1B |=  _BV(CS12);  //256 prescaler
+	//// Set timer to toggle on compare match.
+	TCCR1A |= _BV(COM1A0);
+
+	//// Set Clock frequency to 16MHz/256 = 62500kHz
+	TCCR1B |= _BV(CS12);  //256 prescaler
 	
 	// Set to Clear timer on Compare Match mode (CTC).
 	TCCR1B |= _BV(WGM12);
-	
-	// Enable Timer Interrupt
-	TIMSK1 |= _BV(OCIE1B);
 
-	// set timer frequency 1 Hz. (16000000 / (2 * 1 * 256)) - 1 = 31249
-	OCR1B = 31249;
-	
-	// Set callback.
-	if (0 != callback)
-	{
-		cb = callback;
-	}
-		
+	// set timer frequency
+	OCR1A = HZ;
+
 	// Enable interrupt.
 	ADCSRA |= _BV(ADIE);
 	
 	// Enable Auto Trigger
 	ADCSRA |= _BV(ADATE);
 	
-	// Enable TMP36
-	output_set_state(enable, ACTIVE);
-	
 	// Enable ADC
 	ADCSRA |= _BV(ADEN);
+	
+	// Enable TMP36
+	output_set_state(enable, ACTIVE);
 	
 	// Start Conversion.
 	ADCSRA |= _BV(ADSC);
 }
 
-// AD Interrupt callback.
-ISR(ADC_vect)
-{
+ISR(ADC_vect){
 	// ADC (16bits) = ADCH and ADCL - Default right adjusted ADC value = 0-1023.
 	if (0 != cb)
 		cb(mv_to_c(adc_to_mv(ADC)));
 	
-	// ADC interrupt flag is high!
-	// Clear ADC interrupt flag.
-	ADCSRA |= ~_BV(ADIF);
+	// Clear timer interrupt flag.
+	TIFR1 |= _BV(OCR1A); 
 }

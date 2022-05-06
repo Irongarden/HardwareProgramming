@@ -13,15 +13,33 @@
 #include <stdint.h>
 #include "../../../include/definitions.h"
 
+// TMP36 port configuration.
+// type: port_t
 #define V_IN_PORT						TMP36_V_IN_PORT
+#define ENABLE_PORT						TMP36_ENABLE_PORT
+
+// TMP36 pin configuration.
+// type: uint8_t
 #define V_IN_PIN						TMP36_V_IN_PIN
+#define ENABLE_PIN						TMP36_ENABLE_PIN
+
+// TMP36 active state configuration.
+// Type: active_state_t
 #define V_IN_ACTIVE_STATE				TMP36_V_IN_ACTIVE_STATE
+#define ENABLE_ACTIVE_STATE				TMP36_ENABLE_ACTIVE_STATE
+
+// TMP36 input pull up configuration
+// Type: pull_up_t
 #define V_IN_PULL_UP					TMP36_V_IN_PULL_UP
 
-#define ENABLE_PORT						TMP36_ENABLE_PORT
-#define ENABLE_PIN						TMP36_ENABLE_PIN
-#define ENABLE_ACTIVE_STATE				TMP36_ENABLE_ACTIVE_STATE
+// TMP36 enable default initialization state.
+// Type: state_t
 #define ENABLE_DEFAULT_STATE			TMP36_ENABLE_DEFAULT_STATE
+
+// Measurement frequency.
+// 1 Hz. (16000000 / (2 * 1 * 256)) - 1 = 31249
+// Type: uint16_t
+#define HZ  31249;
 
 void tmp36_init(void (*callback)(uint8_t deg_c));
 

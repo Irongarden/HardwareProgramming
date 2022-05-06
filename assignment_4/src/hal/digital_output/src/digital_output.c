@@ -11,19 +11,8 @@
 
 static void configure_output(io_descriptor_t output)
 {
-	// Initialize Data Direction Register for each output-pin.
+	// Initialize Data Direction Register for output-pin.
 	*(io_ddr(output)) |= _BV(io_bit(output));
-}
-
-io_descriptor_t output_init(port_t port, uint8_t bit, active_state_t active, state_t default_state)
-{
-	io_descriptor_t output = io_descriptor_init(port, bit, active);
-	
-	configure_output(output);
-	
-	output_set_state(output, default_state);
-	
-	return output;
 }
 
 return_code_t output_set_state(io_descriptor_t output, state_t state)
@@ -49,8 +38,19 @@ return_code_t output_set_state(io_descriptor_t output, state_t state)
 		}
 	}
 	
-	// Could preform a check of the actual pin state. 
+	// Could preform a check of the actual pin state.
 	return OK;
+}
+
+io_descriptor_t output_init(port_t port, uint8_t bit, active_state_t active, state_t default_state)
+{
+	io_descriptor_t output = io_descriptor_init(port, bit, active);
+	
+	configure_output(output);
+	
+	output_set_state(output, default_state);
+	
+	return output;
 }
 
 return_code_t output_destroy(io_descriptor_t output)

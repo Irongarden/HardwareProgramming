@@ -11,8 +11,16 @@
 #include "../../../include/definitions.h"
 #include "../../io_descriptior/include/io_descriptor.h"
 
+// No of keys to initialize.
+// Type: uint8_t
 #define K_NO				NO_INPUT_KEYS
+
+// Key pull up configuration
+// Type: pull_up_t
 #define K_PULL_UP_STATE		KEY_PULL_UP
+
+// Key active state configuration.
+// Type: active_state_t
 #define K_ACTIVE_STATE		KEY_ACTIVE_STATE
 
 /**

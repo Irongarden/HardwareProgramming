@@ -9,10 +9,12 @@
 #include "../../input/include/input.h"
 #include "../../digital_output/include/digital_output.h"
 
+// Outputs.
 static io_descriptor_t row[PAD_SIZE];
+// Inputs.
 static io_descriptor_t col[PAD_SIZE];
 
-// Array to represent keys on keypad.
+// Matrix to represent keys on keypad.
 static int8_t keypad[PAD_SIZE][PAD_SIZE] = {
 	{KEYPAD_1, KEYPAD_2, KEYPAD_3, KEYPAD_A},
 	{KEYPAD_4, KEYPAD_5, KEYPAD_6, KEYPAD_B},
@@ -40,18 +42,26 @@ void matrix_keypad_init()
 
 int8_t matrix_keypad_get_x()
 {
-	
+	// Loop through rows.
 	for (uint8_t r = 0; r < PAD_SIZE; r++)
 	{
+		// Set row active.
 		output_set_state(row[r], ACTIVE);
+		
+		// Loop through columns.
 		for (uint8_t c = 0; c < PAD_SIZE; c++)
 		{
+			// check if column is active.
 			if (input_activated(col[c])){
+				// Set row inactive.
 				output_set_state(row[r], INACTIVE);
+				// Lookup return value.
 				return keypad[r][c];
 			}
 		}	
+		// Set row inactive.
 		output_set_state(row[r], INACTIVE);
 	}
+	// No input registered.
 	return KEYPAD_INACTIVE;
 }

@@ -13,8 +13,16 @@
 #include "../../../include/definitions.h"
 #include "../../io_descriptior/include/io_descriptor.h"
 
+// No of leds to initialize.
+// Type: uint8_t
 #define L_NO			NO_OUTPUT_LEDS
+
+// Led active state configuration.
+// Type: active_state_t
 #define L_ACTIVE_STATE	LED_ACTIVE_STATE
+
+// Led default initialization state.
+// Type: state_t
 #define L_DEFAULT_STATE	LED_DEFAULT_STATE
 
 void led_init(io_definition_t io[]);
