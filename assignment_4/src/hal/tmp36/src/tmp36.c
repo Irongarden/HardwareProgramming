@@ -52,24 +52,29 @@ void tmp36_init(void (*callback)(uint8_t deg_c))
 	ADMUX |= _BV(MUX2) | _BV(MUX1) | _BV(MUX0);
 	ADCSRB |= _BV(MUX5);
 	
-	// Set pre-scaler 128
-	ADCSRA |= _BV(ADPS0) | _BV(ADPS1) | _BV(ADPS2);
-	
+	// Set pre-scaler 64
+	ADCSRA |= _BV(ADPS1) | _BV(ADPS2);
+
 	// Set auto trigger source timer1 Compare Match Channel B
 	ADCSRB |= _BV(ADTS2) | _BV(ADTS0);
 	
-	//// Set timer to toggle on compare match.
-	TCCR1A |= _BV(COM1A0);
-
-	//// Set Clock frequency to 16MHz/256 = 62500kHz
-	TCCR1B |= _BV(CS12);  //256 prescaler
+	// ****** Interrupt and auto trigger end ****
+	
+	// ***** Configure Timer 1 Channel B. ******
+	
+	// Set timer to toggle on compare match.
+	TCCR1A |= _BV(COM1B0);
+	
+	// Set Clock frequency to 16MHz/256 = 62500kHz
+	TCCR1B |=  _BV(CS12);  //256 prescaler
 	
 	// Set to Clear timer on Compare Match mode (CTC).
 	TCCR1B |= _BV(WGM12);
 
-	// set timer frequency
-	OCR1A = HZ;
-
+	// set timer frequency 1 Hz. (16000000 / (2 * 1 * 256)) - 1 = 31249
+	OCR1B = HZ; // ADC trigger on TOP
+	OCR1A = HZ; // Counter top
+	
 	// Enable interrupt.
 	ADCSRA |= _BV(ADIE);
 	
@@ -86,11 +91,13 @@ void tmp36_init(void (*callback)(uint8_t deg_c))
 	ADCSRA |= _BV(ADSC);
 }
 
-ISR(ADC_vect){
+// AD Interrupt callback.
+ISR(ADC_vect)
+{
 	// ADC (16bits) = ADCH and ADCL - Default right adjusted ADC value = 0-1023.
 	if (0 != cb)
 		cb(mv_to_c(adc_to_mv(ADC)));
 	
 	// Clear timer interrupt flag.
-	TIFR1 |= _BV(OCR1A); 
+	TIFR1 |= _BV(OCR1A);
 }

@@ -15,9 +15,9 @@ hal/tmp36/src/tmp36.d hal/tmp36/src/tmp36.o: ../hal/tmp36/src/tmp36.c \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h \
  ../hal/tmp36/src/../include/tmp36.h \
  ../hal/tmp36/src/../include/../../../include/definitions.h \
- ../hal/tmp36/src/../include/../../../include/../hal/io_descriptior/include/io_descriptor.h \
+ c:\users\jacob\desktop\assignment_4\src\hal\io_descriptior\include\io_descriptor.h \
  ../hal/tmp36/src/../../digital_output/include/digital_output.h \
- ../hal/tmp36/src/../../digital_output/include/../../io_descriptior/include/io_descriptor.h \
+ c:\users\jacob\desktop\assignment_4\src\hal\io_descriptior\include\io_descriptor.h \
  ../hal/tmp36/src/../../input/include/input.h \
  ../hal/tmp36/src/../../input/include/../../io_descriptior/include/io_descriptor.h
 
@@ -53,11 +53,11 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 
 ../hal/tmp36/src/../include/../../../include/definitions.h:
 
-../hal/tmp36/src/../include/../../../include/../hal/io_descriptior/include/io_descriptor.h:
+c:\users\jacob\desktop\assignment_4\src\hal\io_descriptior\include\io_descriptor.h:
 
 ../hal/tmp36/src/../../digital_output/include/digital_output.h:
 
-../hal/tmp36/src/../../digital_output/include/../../io_descriptior/include/io_descriptor.h:
+c:\users\jacob\desktop\assignment_4\src\hal\io_descriptior\include\io_descriptor.h:
 
 ../hal/tmp36/src/../../input/include/input.h:
 

@@ -22,24 +22,24 @@ main.d main.o: .././main.c \
  .././include/../hal/io_descriptior/include/io_descriptor.h \
  .././hal/key/include/key.h \
  .././hal/key/include/../../../include/definitions.h \
- .././hal/key/include/../../../include/../hal/io_descriptior/include/io_descriptor.h \
+ c:\users\jacob\desktop\assignment_4\src\hal\io_descriptior\include\io_descriptor.h \
  .././hal/key/include/../../io_descriptior/include/io_descriptor.h \
  .././hal/pump/include/pump.h \
  .././hal/pump/include/../../../include/definitions.h \
- .././hal/pump/include/../../../include/../hal/io_descriptior/include/io_descriptor.h \
+ c:\users\jacob\desktop\assignment_4\src\hal\io_descriptior\include\io_descriptor.h \
  .././hal/tmp36/include/tmp36.h \
  .././hal/tmp36/include/../../../include/definitions.h \
- .././hal/tmp36/include/../../../include/../hal/io_descriptior/include/io_descriptor.h \
+ c:\users\jacob\desktop\assignment_4\src\hal\io_descriptior\include\io_descriptor.h \
  .././util/kalman_filter/include/kalman.h .././hal/seg7/include/seg7.h \
  .././hal/seg7/include/../../../include/definitions.h \
- .././hal/seg7/include/../../../include/../hal/io_descriptior/include/io_descriptor.h \
+ c:\users\jacob\desktop\assignment_4\src\hal\io_descriptior\include\io_descriptor.h \
  .././hal/led/include/led.h \
  .././hal/led/include/../../../include/definitions.h \
- .././hal/led/include/../../../include/../hal/io_descriptior/include/io_descriptor.h \
+ c:\users\jacob\desktop\assignment_4\src\hal\io_descriptior\include\io_descriptor.h \
  .././hal/led/include/../../io_descriptior/include/io_descriptor.h \
  .././hal/matrix_keypad/include/matrix_keypad.h \
  .././hal/matrix_keypad/include/../../../include/definitions.h \
- .././hal/matrix_keypad/include/../../../include/../hal/io_descriptior/include/io_descriptor.h
+ c:\users\jacob\desktop\assignment_4\src\hal\io_descriptior\include\io_descriptor.h
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdlib.h:
 
@@ -87,7 +87,7 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 
 .././hal/key/include/../../../include/definitions.h:
 
-.././hal/key/include/../../../include/../hal/io_descriptior/include/io_descriptor.h:
+c:\users\jacob\desktop\assignment_4\src\hal\io_descriptior\include\io_descriptor.h:
 
 .././hal/key/include/../../io_descriptior/include/io_descriptor.h:
 
@@ -95,13 +95,13 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 
 .././hal/pump/include/../../../include/definitions.h:
 
-.././hal/pump/include/../../../include/../hal/io_descriptior/include/io_descriptor.h:
+c:\users\jacob\desktop\assignment_4\src\hal\io_descriptior\include\io_descriptor.h:
 
 .././hal/tmp36/include/tmp36.h:
 
 .././hal/tmp36/include/../../../include/definitions.h:
 
-.././hal/tmp36/include/../../../include/../hal/io_descriptior/include/io_descriptor.h:
+c:\users\jacob\desktop\assignment_4\src\hal\io_descriptior\include\io_descriptor.h:
 
 .././util/kalman_filter/include/kalman.h:
 
@@ -109,13 +109,13 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 
 .././hal/seg7/include/../../../include/definitions.h:
 
-.././hal/seg7/include/../../../include/../hal/io_descriptior/include/io_descriptor.h:
+c:\users\jacob\desktop\assignment_4\src\hal\io_descriptior\include\io_descriptor.h:
 
 .././hal/led/include/led.h:
 
 .././hal/led/include/../../../include/definitions.h:
 
-.././hal/led/include/../../../include/../hal/io_descriptior/include/io_descriptor.h:
+c:\users\jacob\desktop\assignment_4\src\hal\io_descriptior\include\io_descriptor.h:
 
 .././hal/led/include/../../io_descriptior/include/io_descriptor.h:
 
@@ -123,4 +123,4 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 
 .././hal/matrix_keypad/include/../../../include/definitions.h:
 
-.././hal/matrix_keypad/include/../../../include/../hal/io_descriptior/include/io_descriptor.h:
+c:\users\jacob\desktop\assignment_4\src\hal\io_descriptior\include\io_descriptor.h:

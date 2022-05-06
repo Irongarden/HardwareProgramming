@@ -12,10 +12,10 @@ hal/led/src/led.d hal/led/src/led.o: ../hal/led/src/led.c \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h \
  ../hal/led/src/../include/led.h \
  ../hal/led/src/../include/../../../include/definitions.h \
- ../hal/led/src/../include/../../../include/../hal/io_descriptior/include/io_descriptor.h \
+ c:\users\jacob\desktop\assignment_4\src\hal\io_descriptior\include\io_descriptor.h \
  ../hal/led/src/../include/../../io_descriptior/include/io_descriptor.h \
  ../hal/led/src/../../digital_output/include/digital_output.h \
- ../hal/led/src/../../digital_output/include/../../io_descriptior/include/io_descriptor.h
+ c:\users\jacob\desktop\assignment_4\src\hal\io_descriptior\include\io_descriptor.h
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h:
 
@@ -43,10 +43,10 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 
 ../hal/led/src/../include/../../../include/definitions.h:
 
-../hal/led/src/../include/../../../include/../hal/io_descriptior/include/io_descriptor.h:
+c:\users\jacob\desktop\assignment_4\src\hal\io_descriptior\include\io_descriptor.h:
 
 ../hal/led/src/../include/../../io_descriptior/include/io_descriptor.h:
 
 ../hal/led/src/../../digital_output/include/digital_output.h:
 
-../hal/led/src/../../digital_output/include/../../io_descriptior/include/io_descriptor.h:
+c:\users\jacob\desktop\assignment_4\src\hal\io_descriptior\include\io_descriptor.h:

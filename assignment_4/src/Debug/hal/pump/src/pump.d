@@ -12,9 +12,9 @@ hal/pump/src/pump.d hal/pump/src/pump.o: ../hal/pump/src/pump.c \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\version.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\fuse.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h \
- ../hal/pump/src/../include/../../../include/../hal/io_descriptior/include/io_descriptor.h \
+ c:\users\jacob\desktop\assignment_4\src\hal\io_descriptior\include\io_descriptor.h \
  ../hal/pump/src/../../digital_output/include/digital_output.h \
- ../hal/pump/src/../../digital_output/include/../../io_descriptior/include/io_descriptor.h
+ c:\users\jacob\desktop\assignment_4\src\hal\io_descriptior\include\io_descriptor.h
 
 ../hal/pump/src/../include/pump.h:
 
@@ -42,8 +42,8 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h:
 
-../hal/pump/src/../include/../../../include/../hal/io_descriptior/include/io_descriptor.h:
+c:\users\jacob\desktop\assignment_4\src\hal\io_descriptior\include\io_descriptor.h:
 
 ../hal/pump/src/../../digital_output/include/digital_output.h:
 
-../hal/pump/src/../../digital_output/include/../../io_descriptior/include/io_descriptor.h:
+c:\users\jacob\desktop\assignment_4\src\hal\io_descriptior\include\io_descriptor.h:

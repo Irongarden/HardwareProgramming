@@ -13,9 +13,9 @@ hal/seg7/src/seg7.d hal/seg7/src/seg7.o: ../hal/seg7/src/seg7.c \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h \
  ../hal/seg7/src/../include/seg7.h \
  ../hal/seg7/src/../include/../../../include/definitions.h \
- ../hal/seg7/src/../include/../../../include/../hal/io_descriptior/include/io_descriptor.h \
+ c:\users\jacob\desktop\assignment_4\src\hal\io_descriptior\include\io_descriptor.h \
  ../hal/seg7/src/../../digital_output/include/digital_output.h \
- ../hal/seg7/src/../../digital_output/include/../../io_descriptior/include/io_descriptor.h
+ c:\users\jacob\desktop\assignment_4\src\hal\io_descriptior\include\io_descriptor.h
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h:
 
@@ -45,8 +45,8 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 
 ../hal/seg7/src/../include/../../../include/definitions.h:
 
-../hal/seg7/src/../include/../../../include/../hal/io_descriptior/include/io_descriptor.h:
+c:\users\jacob\desktop\assignment_4\src\hal\io_descriptior\include\io_descriptor.h:
 
 ../hal/seg7/src/../../digital_output/include/digital_output.h:
 
-../hal/seg7/src/../../digital_output/include/../../io_descriptior/include/io_descriptor.h:
+c:\users\jacob\desktop\assignment_4\src\hal\io_descriptior\include\io_descriptor.h:

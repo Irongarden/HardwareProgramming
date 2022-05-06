@@ -36,12 +36,12 @@
 // Type: state_t
 #define ENABLE_DEFAULT_STATE			TMP36_ENABLE_DEFAULT_STATE
 
+void tmp36_init(void (*callback)(uint8_t deg_c));
+
 // Measurement frequency.
 // 1 Hz. (16000000 / (2 * 1 * 256)) - 1 = 31249
 // Type: uint16_t
 #define HZ  31249;
-
-void tmp36_init(void (*callback)(uint8_t deg_c));
 
 // For testing only.
 uint8_t mv_to_c(uint16_t mv);

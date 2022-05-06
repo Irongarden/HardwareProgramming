@@ -73,6 +73,7 @@ static void leds_init_all()
 	led_init(leds);
 }
 
+// Takes the array [1, 2, 3, 4] and outputs 1234
 static uint16_t array_to_int(uint8_t arr[])
 {
 	uint16_t k = 0;
