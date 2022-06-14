@@ -60,7 +60,6 @@ int8_t newT(int8_t new, int8_t old, uint8_t k){
 		new = array_to_int(array);
 		return new;
 		
-		//thighNew += k;
 	}
 	return 127;
 	
@@ -70,7 +69,6 @@ int8_t newT(int8_t new, int8_t old, uint8_t k){
 int main(void)
 {
 	init_leds();
-	
 	tmp36_init(new_measurement);
 	init_display(SPI);
 	init_matrix_keyboard();
@@ -85,6 +83,8 @@ int main(void)
 	printint_4u(0);
     while (1) 
     {
+		//assignment1();
+		
 		if(temp>thigh){
 			lightbar(1);
 		}else if(temp<tlow){
@@ -131,27 +131,6 @@ int main(void)
 				}
 				
 				
-				//if(k==14){ // If save pressed
-					//thigh = thighNew;
-					//thighNew = 0;
-					//array[3] = 0;
-					//array[2] = 0;
-				//}else if(k==13){ // if Cancel pressed
-					//thighNew = 0;
-					//array[3] = 0;
-					//array[2] = 0;
-				//}else if(thighNew<=99){ // check if value is inside spectra
-					//if(array[3]!=0){
-						//array[2]=array[3];
-						//array[3]=0;
-						//}else{
-						//array[3] = k;
-					//}
-					//thighNew = array_to_int(array);
-					//
-					////thighNew += k;
-				//}
-				//
 				
 				}
 			break;
@@ -174,31 +153,11 @@ int main(void)
 				}
 				 
 				
-				//if(s==14){ // If save pressed
-					//tlow = tlowNew;
-					//tlowNew = 0;
-					//array[3] = 0;
-					//array[2] = 0;
-					//}else if(s==13){ // if Cancel pressed
-					//tlowNew = 0;
-					//array[3] = 0;
-					//array[2] = 0;
-					//}else if(tlowNew<=99){ // check if value is inside spectra
-					//if(array[3]!=0){
-						//array[2]=array[3];
-						//array[3]=0;
-						//}else{
-						//array[3] = s;
-					//}
-					//tlowNew = array_to_int(array);
-					//
-					////thighNew += k;
-				//}
-				//
-				
 			}
 			break;
 		}
+		
+		
 		
 		
 		//else{
@@ -226,6 +185,20 @@ int main(void)
 	
 	
 	//return 0;
+}
+
+void assignment1(){
+	
+		set_led(0,get_key(1) & get_key(2));// AND = True
+		set_led(1,get_key(1) | get_key(2));//OR LED ON
+		set_led(2,get_key(1) ^ get_key(2));//XOR LED OFF
+		set_led(3,!(get_key(1) & get_key(2)));//NAND OFF
+		set_led(4,!(get_key(1) | get_key(2)));//NOR OFF
+		set_led(5,!(get_key(1) ^ get_key(2)));//XNOR ON
+}
+
+void assignment2(){
+	if()
 }
 
 

@@ -72,6 +72,7 @@ void tmp36_init(void (*callback)(uint8_t deg_c))
 
 	// set timer frequency 1 Hz. (16000000 / (2 * 1 * 256)) - 1 = 31249
 	OCR1B = 31249;
+	OCR1A = 31249;
 	
 	// ***** Timer config end *********
 	
@@ -80,7 +81,7 @@ void tmp36_init(void (*callback)(uint8_t deg_c))
 		cb = callback;
 		
 	// Enable Timer Interrupt
-	TIMSK1 |= _BV(OCIE1B);
+	//TIMSK1 |= _BV(OCIE1B);
 	
 	// Enable interrupt.
 	ADCSRA |= _BV(ADIE);
@@ -97,7 +98,7 @@ void tmp36_init(void (*callback)(uint8_t deg_c))
 	ADCSRA |= _BV(ADEN);
 	
 	
-	// Start Conversion.
+	// Start Conversion. AD control and status register
 	ADCSRA |= _BV(ADSC);
 }
 
@@ -110,7 +111,5 @@ ISR(ADC_vect)
 		cb(mv_to_c(adc_to_mv(ADC)));
 		
 	
-	// ADC interrupt flag is high!
-	// Clear ADC interrupt flag.
-	ADCSRA |= ~_BV(ADIF);
+	TIFR1 |= _BV(OCR1B);
 }

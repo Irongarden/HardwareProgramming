@@ -16,9 +16,7 @@ void init_leds()
 	PORTA = 0xFF;
 }
 
-/*
-* Leds are active low.
-*/
+
 void set_led(uint8_t led_no, uint8_t state)
 {
 	if (led_no > 0 && led_no < 9)

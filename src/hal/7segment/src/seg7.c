@@ -47,7 +47,7 @@ static uint8_t display[SEGMENTS] = {0x0, 0x0, 0x0, 0x0};
 static void set_refresh_rate() 
 {
 	// Set timer toggle on compare match
-	TCCR4A |= _BV(COM4A0);
+	//TCCR4A |= _BV(COM4A0);
 	
 	// Set prescaler 8
 	TCCR4B |= _BV(CS41);
@@ -79,7 +79,7 @@ void init_display(communication_t mode) {
 	DDRB |= _BV(RCK);
 	
 	if (communication == SPI) {
-		// Setup CPOL functionality to sample at rising edge.
+		// Setup CPOL functionality to sample at rising edge. Setup falling
 		SPCR &= ~ (_BV(CPOL) | _BV(CPHA));
 	
 		// DORD 0 OR 1: start from least significant bit or opposite.
