@@ -76,114 +76,17 @@ int main(void)
 	
 	// Enable interrupt globally.
 	sei();
-	
-	
-	
+
 	_delay_ms(500);
-	printint_4u(0);
+	//printint_4u(0);
     while (1) 
     {
 		//assignment1();
+		//assignment2();
+		assignment3and4();
 		
-		if(temp>thigh){
-			lightbar(1);
-		}else if(temp<tlow){
-			lightbar(0);
-		}
-		
-		keypress = scan_key();
-		
-		
-		if(keypress){
-			//_delay_ms(100);
-			key = keypress;	
-			//printint_4u(scan_key());
-		}
-		
-		
-		switch (key){						// Which key pressed
-			
-			case 3:							// Current temp
-			
-			printint_4u(temp);
-			//printint_4u(keypress);
-			//printint_4u(temp);
-			break;
-			
-			case 2:							// High temp
-			
-			
-			if(thighNew!=0){
-				printint_4u(thighNew);
-			}else{
-				printint_4u(thigh);
-			}
-			uint8_t k = getxkey();
-			_delay_ms(200);
-			
-			
-			if(k!=127) // if keys are pressed
-			{
-				
-				uint8_t n = newT(thighNew,thigh,k);
-				if(n!=127){
-					thighNew =n;
-				}
-				
-				
-				
-				}
-			break;
-			
-			case 1:							// Low temp
-			if(tlowNew!=0){
-				printint_4u(tlowNew);
-				}else{
-				printint_4u(tlow);
-			}
-			uint8_t s = getxkey();
-			_delay_ms(200);
-			
-			
-			if(s!=127) // if keys are pressed
-			{
-				uint8_t x = newT(tlowNew,tlow,s);
-				if(x!=127){
-					tlowNew =x;
-				}
-				 
-				
-			}
-			break;
-		}
-		
-		
-		
-		
-		//else{
-			//bob = getxkey();
-			////_delay_ms(500);
-			//printint_4u(bob);
-		//}
-		
-		//uint8_t level = temp - offset;
-		//if (level <= 0)
-		//{
-			//lightbar(0);
-		//}
-		//else if (level < 9)
-		//{
-			//lightbar(level);
-		//}
-		//else
-		//{
-			//lightbar(8);
-		//}
     }
-	
-	
-	
-	
+
 	//return 0;
 }
 
@@ -198,7 +101,87 @@ void assignment1(){
 }
 
 void assignment2(){
-	if()
+	int8_t level = temp - offset;
+	if (level <= 0)
+	{
+		lightbar(0);
+	}
+	else if (level < 9)
+	{
+		lightbar(level);
+	}
+	else
+	{
+		lightbar(8);
+	}
+}
+
+void assignment3and4(){
+	if(temp>thigh){
+		lightbar(1);
+		}else if(temp<tlow){
+		lightbar(0);
+	}
+	
+	keypress = scan_key();
+	
+	
+	if(keypress){
+		//_delay_ms(100);
+		key = keypress;
+		//printint_4u(scan_key());
+	}
+	
+	
+	switch (key){						// Which key pressed
+		
+		case 3:							// Current temp
+		
+		printint_4u(temp);
+		break;
+		
+		case 2:							// High temp
+		if(thighNew!=0){
+			printint_4u(thighNew);
+			}else{
+			printint_4u(thigh);
+		}
+		uint8_t k = getxkey();
+		_delay_ms(200);
+		
+		
+		if(k!=127) // if keys are pressed
+		{
+			
+			uint8_t n = newT(thighNew,thigh,k);
+			if(n!=127){
+				thighNew =n;
+			}
+
+		}
+		break;
+		
+		case 1:							// Low temp
+		if(tlowNew!=0){
+			printint_4u(tlowNew);
+			}else{
+			printint_4u(tlow);
+		}
+		uint8_t s = getxkey();
+		_delay_ms(200);
+		
+		
+		if(s!=127) // if keys are pressed
+		{
+			uint8_t x = newT(tlowNew,tlow,s);
+			if(x!=127){
+				tlowNew =x;
+			}
+			
+			
+		}
+		break;
+	}
 }
 
 
