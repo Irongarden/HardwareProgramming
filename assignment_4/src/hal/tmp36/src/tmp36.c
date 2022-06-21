@@ -99,5 +99,5 @@ ISR(ADC_vect)
 		cb(mv_to_c(adc_to_mv(ADC)));
 	
 	// Clear timer interrupt flag.
-	TIFR1 |= _BV(OCR1A);
+	TIFR1 |= _BV(OCR1B);
 }
